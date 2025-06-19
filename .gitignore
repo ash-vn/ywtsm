@@ -1,0 +1,10 @@
+*.txt
+*/===old
+*.rpyc
+*.rpyb
+*.rpym
+*.rpymc
+*saves
+*images/menu
+.vscode
+*/.vscode
