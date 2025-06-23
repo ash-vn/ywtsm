@@ -1,23 +1,16 @@
 image menu_bg = "gui/main_menu.png"
-image menu_art = "gui/menu_art.png"
+image main_menu = "gui/main menu.png"
 image logo = "gui/logo.png"
-image above_layer = "gui/menu/above layer.png"
-image menu_art_dist = "gui/menu_art dist.png"
 image logo_dist = "gui/logo dist.png"
-image above_layer_dist = "gui/menu/above layer dist.png"
-
-transform menu_art_pos:
-    yalign 0.0
-    xalign 0.2
+image main_menu_dist = "gui/main menu_distort.png"
 
 transform logo_pos:
-    yalign 0.1
-    xalign 0.1
-
-transform above_layer_pos:
-    alpha .5
-    # xpos -900
-    # ypos -52
+    on hover:
+        zoom 1.0
+        linear 1.0 zoom 2.0
+    on idle:
+        linear 1.0 zoom 1.0
+    # linear 1.0 zoom 1.0
 
 transform show_hide_dissolve:
     on show:
@@ -41,40 +34,49 @@ screen navigation():
         hbox:
             yalign 0.83
             xalign 0.07
-            imagebutton auto "gui/gallery button %s.png" action Start()
+            imagebutton auto "gui/gallery button %s.png" action Call("gallery")
         
         hbox:
             yalign 0.95
             xalign 0.23
-            imagebutton auto "gui/ending button %s.png" action Start()
+            imagebutton auto "gui/ending button %s.png" action Call("endings")
         
         # hbox:
         #     yalign 0.98
         #     xalign 0.02
         #     imagebutton auto "gui/x select %s.png" action Start()
 
-        
-label main_menu:
+
+label confirm_quit:
+    show main_menu_dist
+    show logo_dist at logo_pos
+    with Dissolve(.5)
+    pause(1.0)
+    python:
+        renpy.transition(dissolve)
+        renpy.call_screen('confirm', "Are you really sure you want to quit?", Quit(), Jump("main_menu"))
+
+label main_menu(load=True):
     # jump start  ###### DEBUGGGGG
+    define config.developer = False
+    while True:
+        call screen flat_navigation
 
     hide blue_overlay
     scene black
-    pause(0.5)
-    show menu_bg with dissolve
-    pause(0.5)
-    show menu_art at menu_art_pos with dissolve
-    show logo at logo_pos with Dissolve(1.0)
-    show above_layer
+    if load:
+        pause(0.5)
+    show menu_bg
+    if load:
+        with dissolve
+        pause(0.5)
+    show main_menu
+    if load:
+        with dissolve
+    show logo at logo_pos
+    if load:
+        with Dissolve(1.0)
 
     python:
         renpy.transition(dissolve)
         renpy.call_screen('main_menu')
-
-label confirm_quit:
-    hide menu_art
-    hide logo
-    hide above_layer
-    show menu_art_dist at menu_art_pos
-    show logo_dist at logo_pos
-    show above_layer_dist at above_layer_pos
-    call screen confirm("Are you really sure you want to quit?", Quit(), Jump("main_menu"))

@@ -5,3 +5,6 @@ label mc_initialization:
     define orange = 0
     define max_aff_level = 0
     define last_aff_level = 0
+    define color = 'green lol'
+
+    default persistent.endings_seen = [False] * 16

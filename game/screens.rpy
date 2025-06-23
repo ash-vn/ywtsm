@@ -216,10 +216,10 @@ screen choice(items):
         for i in items:
             textbutton i.caption action i.action
 
-transform hover_enlarge: 
-    on hover: 
-        linear 0.1 zoom 1.1 
-    on idle: 
+transform hover_enlarge:
+    on hover:
+        linear 0.1 zoom 1.1
+    on idle:
         linear 0.1 zoom 1.0
 
 style choice_vbox is vbox
