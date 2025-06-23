@@ -26,6 +26,10 @@ style gui_text:
 
 style button:
     properties gui.button_properties("button")
+    activate_sound "assets/audio/click_hard.mp3"
+
+style image_button:
+    activate_sound "assets/audio/click_hard.mp3"
 
 style button_text is gui_text:
     properties gui.text_properties("button")
@@ -217,10 +221,34 @@ screen choice(items):
             textbutton i.caption action i.action
 
 transform hover_enlarge:
+    # linear 1.0 rotate 1.0
+    # linear 1.0 rotate -1.0
+    # repeat
     on hover:
-        linear 0.1 zoom 1.1
+        linear 0.1:
+            zoom 1.05
+            rotate -1.0
     on idle:
-        linear 0.1 zoom 1.0
+        linear 0.1:
+            zoom 1.00
+            rotate 0.0
+
+transform hover_brighter:
+    on hover:
+        linear 0.1 matrixcolor BrightnessMatrix(0.2)
+    on idle:
+        linear 0.1 matrixcolor BrightnessMatrix(0.0)
+
+transform spin:
+    xalign 0.5
+    yalign 0.4
+    anchor (0.5, 0.5)
+    on hover:
+        rotate 0
+        linear 10.0 rotate 360.0
+        repeat
+    on idle:
+        rotate 0
 
 style choice_vbox is vbox
 style choice_button is button
@@ -235,6 +263,8 @@ style choice_vbox:
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
+    hover_sound "assets/audio/click.mp3"
+    activate_sound "assets/audio/new_ping.mp3"
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
@@ -270,8 +300,8 @@ screen quick_menu():
             yalign 0.025
             spacing 20
 
-            imagebutton idle "gui/button/history button.png" action ShowMenu('history')
-            imagebutton idle "gui/button/settings button.png" action ShowMenu('preferences')
+            imagebutton idle "gui/button/history button.png" action ShowMenu('history') at hover_brighter
+            imagebutton idle "gui/button/settings button.png" action ShowMenu('preferences') at spin
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
@@ -285,6 +315,7 @@ style quick_button_text is button_text
 
 style quick_button:
     properties gui.button_properties("quick_button")
+    activate_sound "assets/audio/click.mp3"
 
 style quick_button_text:
     properties gui.text_properties("quick_button")

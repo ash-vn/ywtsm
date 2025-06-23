@@ -23,23 +23,31 @@ transform show_hide_dissolve:
 screen navigation():
     if renpy.get_screen("main_menu"):
         vbox:
-            yalign 0.65
+            yalign 0.3
             xalign 0.96
-            spacing 20
-            imagebutton auto "gui/new game %s.png" action Start()
-            imagebutton auto "gui/load game %s.png" action ShowMenu("load")
-            imagebutton auto "gui/options %s.png" action ShowMenu("preferences")
-            imagebutton auto "gui/quit game %s.png" action Jump("confirm_quit")  # ConfirmQuit()
+            imagebutton auto "gui/new game %s.png" action Start() at hover_enlarge
+        vbox:
+            yalign 0.48
+            xalign 0.96
+            imagebutton auto "gui/load game %s.png" action ShowMenu("load") at hover_enlarge
+        vbox:
+            yalign 0.66
+            xalign 0.96
+            imagebutton auto "gui/options %s.png" action ShowMenu("preferences") at hover_enlarge
+        vbox:
+            yalign 0.84
+            xalign 0.96
+            imagebutton auto "gui/quit game %s.png" action Jump("confirm_quit") at hover_enlarge  # ConfirmQuit()
         
         hbox:
             yalign 0.83
             xalign 0.07
-            imagebutton auto "gui/gallery button %s.png" action Call("gallery")
+            imagebutton auto "gui/gallery button %s.png" action Call("gallery") at hover_enlarge
         
         hbox:
             yalign 0.95
             xalign 0.23
-            imagebutton auto "gui/ending button %s.png" action Call("endings")
+            imagebutton auto "gui/ending button %s.png" action Call("endings") at hover_enlarge
         
         # hbox:
         #     yalign 0.98
@@ -48,6 +56,7 @@ screen navigation():
 
 
 label confirm_quit:
+    play music "assets/audio/music/bgm_dist.mp3" volume 1.0 fadeout 0.2
     show main_menu_dist
     show logo_dist at logo_pos
     with Dissolve(.5)
@@ -58,9 +67,9 @@ label confirm_quit:
 
 label main_menu(load=True):
     # jump start  ###### DEBUGGGGG
-    define config.developer = False
-    while True:
-        call screen flat_navigation
+    # define config.developer = False
+    # while True:
+    #     call screen flat_navigation
 
     hide blue_overlay
     scene black

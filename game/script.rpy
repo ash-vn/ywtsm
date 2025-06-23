@@ -9,10 +9,12 @@ label start:  # main game logic loop lives here
     show screen blue_overlay onlayer sprites
     show screen stripes_overlay
 
-    call mc_initialization
-    call meet_cute
-    call rejection_of_relationship
-    call giving_the_relationship_a_chance
+    stop music
+
+    call mc_initialization from _call_mc_initialization
+    call meet_cute from _call_meet_cute
+    call rejection_of_relationship from _call_rejection_of_relationship
+    call giving_the_relationship_a_chance from _call_giving_the_relationship_a_chance
     
     # TnT
 

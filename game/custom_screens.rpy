@@ -33,7 +33,7 @@ transform ending_go_back_pos:
     repeat
 
 screen ending_screen:
-    imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos
+    imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos, hover_enlarge
 
     vbox:
         yalign 0.7
