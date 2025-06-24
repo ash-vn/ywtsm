@@ -8,7 +8,12 @@ image outside = 'gui/apartment/outside.png'
 define daily_events = [
     [["", "Icarus decided to spook you!"], ["ICARUS", "Boo!"], ["", "You got scared!"]],
     [["", "Icarus hugged you from behind."], ["", "Your heart just melted!"]], 
-[["", "Event 3"]],[["", "Event 4"]],[["", "Event 5"]],[["", "Event 6"]],[["", "Event 7"]],[["", "Event 8"]],[["", "Event 9"]],[["", "Event 10"]],[["", "Event 11"]]
+[["", "Event 3"]],
+[["", "Event 4"]],
+[["", "Event 5"]],
+[["", "Event 6"]],
+[["", "Event 7"]],
+[["", "Event 8"]],
 ]
 
 define balcony_list = [
@@ -31,7 +36,7 @@ define desk_list = [
     "You decide to work on your laptop.",
 ]
 define desk_outcomes = [
-    "Icarus startles you, and you end up erasing your work for the last hour![w=0.0]Luckily, there's an undo button.",
+    "Icarus startles you, and you end up erasing your work for the last hour! Luckily, there's an undo button.",
     "Icarus looks at your screen with childlike curiosity.",
 ]
 
@@ -65,14 +70,8 @@ label balcony:
     scene balcony with dissolve
     python:
         from random import choice, randint
-        chance = randint(0, 100)
-        if chance >= 90:
-            renpy.show(f"images/daily_event_art/{chance - 90}.png")
-            for e in daily_events[chance - 90]:
-                renpy.say(e[0], e[1])
-        else:
-            renpy.say("", choice(balcony_list))
-            renpy.say("", choice(balcony_outcomes))
+        renpy.say("", choice(balcony_list))
+        renpy.say("", choice(balcony_outcomes))
     return
 
 label bed:
@@ -80,14 +79,8 @@ label bed:
     scene bed with dissolve
     python:
         from random import choice, randint
-        chance = randint(0, 100)
-        if chance >= 90:
-            renpy.show(f"images/daily_event_art/{chance - 90}.png")
-            for e in daily_events[chance - 90]:
-                renpy.say(e[0], e[1])
-        else:
-            renpy.say("", choice(bed_list))
-            renpy.say("", choice(bed_outcomes))
+        renpy.say("", choice(bed_list))
+        renpy.say("", choice(bed_outcomes))
     return
 
 label desk:
@@ -95,14 +88,8 @@ label desk:
     scene desk with dissolve
     python:
         from random import choice, randint
-        chance = randint(0, 100)
-        if chance >= 90:
-            renpy.show(f"images/daily_event_art/{chance - 90}.png")
-            for e in daily_events[chance - 90]:
-                renpy.say(e[0], e[1])
-        else:
-            renpy.say("", choice(desk_list))
-            renpy.say("", choice(desk_outcomes))
+        renpy.say("", choice(desk_list))
+        renpy.say("", choice(desk_outcomes))
     return
 
 label kitchen:
@@ -110,14 +97,8 @@ label kitchen:
     scene kitchen with dissolve
     python:
         from random import choice, randint
-        chance = randint(0, 100)
-        if chance >= 90:
-            renpy.show(f"images/daily_event_art/{chance - 90}.png")
-            for e in daily_events[chance - 90]:
-                renpy.say(e[0], e[1])
-        else:
-            renpy.say("", choice(kitchen_list))
-            renpy.say("", choice(kitchen_outcomes))
+        renpy.say("", choice(kitchen_list))
+        renpy.say("", choice(kitchen_outcomes))
     return
 
 label lounge:
@@ -125,14 +106,8 @@ label lounge:
     scene lounge with dissolve
     python:
         from random import choice, randint
-        chance = randint(0, 100)
-        if chance >= 90:
-            renpy.show(f"images/daily_event_art/{chance - 90}.png")
-            for e in daily_events[chance - 90]:
-                renpy.say(e[0], e[1])
-        else:
-            renpy.say("", choice(lounge_list))
-            renpy.say("", choice(lounge_outcomes))
+        renpy.say("", choice(lounge_list))
+        renpy.say("", choice(lounge_outcomes))
     return
 
 label outside:
@@ -153,4 +128,43 @@ label outside:
             python:
                 renpy.transition(dissolve)
                 renpy.call_screen('flat_navigation')
+    return
+
+transform chibi_art:
+    zoom 0.3
+    yalign 0.35
+    xalign 0.5
+
+transform paper:
+    yalign 0.3
+    xalign 0.5
+
+label daily_event_chance:
+    image base = "images/daily_event_art/base.png"
+    image flat = "gui/HUD_Homescreen.png"
+    image im0 = "images/daily_event_art/0.png"
+    image im1 = "images/daily_event_art/1.png"
+    image im2 = "images/daily_event_art/2.png"
+    image im3 = "images/daily_event_art/3.png"
+    image im4 = "images/daily_event_art/4.png"
+    image im5 = "images/daily_event_art/5.png"
+    image im6 = "images/daily_event_art/6.png"
+    image im7 = "images/daily_event_art/7.png"
+    # scene flat
+    python:
+        from random import choice, randint
+        chance = randint(0, 8)
+        if chance <= 7:
+            renpy.show('base', layer='sprites', at_list=[paper])
+            renpy.transition(easeinbottom, layer='sprites')
+            renpy.show(f'im{chance}', layer='sprites', at_list=[chibi_art])
+            renpy.transition(easeinbottom, layer='sprites')
+            # renpy.show(f)
+            renpy.say(daily_events[chance][0][0], daily_events[chance][0][1])
+            for e in daily_events[chance]:
+                renpy.say(e[0], e[1])
+            renpy.hide('base', layer='sprites')
+            renpy.hide(f'im{chance}', layer='sprites')
+            renpy.transition(dissolve, layer='sprites')
+            renpy.pause(0.6)
     return

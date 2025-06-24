@@ -25,29 +25,29 @@ screen navigation():
         vbox:
             yalign 0.3
             xalign 0.96
-            imagebutton auto "gui/new game %s.png" action Start() at hover_enlarge
+            imagebutton auto "gui/new game %s.png" action Start() at hover_enlarge_tilt
         vbox:
             yalign 0.48
             xalign 0.96
-            imagebutton auto "gui/load game %s.png" action ShowMenu("load") at hover_enlarge
+            imagebutton auto "gui/load game %s.png" action ShowMenu("load") at hover_enlarge_tilt
         vbox:
             yalign 0.66
             xalign 0.96
-            imagebutton auto "gui/options %s.png" action ShowMenu("preferences") at hover_enlarge
+            imagebutton auto "gui/options %s.png" action ShowMenu("preferences") at hover_enlarge_tilt
         vbox:
             yalign 0.84
             xalign 0.96
-            imagebutton auto "gui/quit game %s.png" action Jump("confirm_quit") at hover_enlarge  # ConfirmQuit()
+            imagebutton auto "gui/quit game %s.png" action Jump("confirm_quit") at hover_enlarge_tilt  # ConfirmQuit()
         
         hbox:
             yalign 0.83
             xalign 0.07
-            imagebutton auto "gui/gallery button %s.png" action Call("gallery") at hover_enlarge
+            imagebutton auto "gui/gallery button %s.png" action Call("gallery") at hover_enlarge_tilt
         
         hbox:
             yalign 0.95
             xalign 0.23
-            imagebutton auto "gui/ending button %s.png" action Call("endings") at hover_enlarge
+            imagebutton auto "gui/ending button %s.png" action Call("endings") at hover_enlarge_tilt
         
         # hbox:
         #     yalign 0.98

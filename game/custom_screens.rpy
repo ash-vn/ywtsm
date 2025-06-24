@@ -33,7 +33,7 @@ transform ending_go_back_pos:
     repeat
 
 screen ending_screen:
-    imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos, hover_enlarge
+    imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos, hover_enlarge_tilt
 
     vbox:
         yalign 0.7
@@ -51,6 +51,7 @@ screen flat_navigation():
     add "gui/HUD_Homescreen.png"
 
     imagebutton idle "gui/button/navigation button idle.png" xalign 0.95 yalign 0.5 at hover_enlarge action Call("outside")
+    imagebutton idle "gui/button/nav arrow idle.png" at hover_enlarge, nav_arrow_pos
     # add "gui/button/apartment button idle.png" xalign 0.03 yalign 0.15 at appear_from_alpha
 
     imagebutton idle "gui/button/balcony button idle.png" at balcony_pos action Call('balcony')
@@ -59,6 +60,12 @@ screen flat_navigation():
     imagebutton idle "gui/button/kitchen button idle.png" at kitchen_pos action Call('kitchen')
     imagebutton idle "gui/button/lounge button idle.png" at lounge_pos action Call('lounge')
 
+transform nav_arrow_pos:
+    yalign 0.35
+    xalign 0.9425
+    linear 1.0 yalign 0.34
+    linear 1.0 yalign 0.35
+    repeat
 
 transform appear_from_alpha:
     alpha 0.0

@@ -96,7 +96,7 @@ label rejection_of_relationship:
     Then, slowly, cautiously he peeks out and steps into the light. 
     """
 
-    show icarus with Dissolve(3.0)
+    show icarus at icarus_transform with Dissolve(3.0)
 
     "There is no shadow behind him, but he clearly looks human."
 

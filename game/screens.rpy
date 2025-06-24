@@ -220,7 +220,7 @@ screen choice(items):
         for i in items:
             textbutton i.caption action i.action
 
-transform hover_enlarge:
+transform hover_enlarge_tilt:
     # linear 1.0 rotate 1.0
     # linear 1.0 rotate -1.0
     # repeat
@@ -232,6 +232,14 @@ transform hover_enlarge:
         linear 0.1:
             zoom 1.00
             rotate 0.0
+
+transform hover_enlarge:
+    on hover:
+        linear 0.1:
+            zoom 1.05
+    on idle:
+        linear 0.1:
+            zoom 1.00
 
 transform hover_brighter:
     on hover:
@@ -280,7 +288,7 @@ screen quick_menu():
     ## Ensure this appears on top of other screens.
     zorder 100
 
-    if quick_menu:
+    if quick_menu and renpy.get_screen("say"):
 
         hbox:
             style_prefix "quick"
@@ -294,7 +302,7 @@ screen quick_menu():
             imagebutton auto "gui/button/save button %s.png" action QuickSave()
             imagebutton auto "gui/button/load button %s.png" action QuickLoad()
             imagebutton auto "gui/button/menu button %s.png" action MainMenu()
-    
+
         hbox:
             xalign 0.98
             yalign 0.025
@@ -316,6 +324,7 @@ style quick_button_text is button_text
 style quick_button:
     properties gui.button_properties("quick_button")
     activate_sound "assets/audio/click.mp3"
+
 
 style quick_button_text:
     properties gui.text_properties("quick_button")

@@ -25,3 +25,38 @@ label start:  # main game logic loop lives here
     elif (orange > blue and orange > purple) or (orange == blue and orange > purple and color == 'orange') or (orange == purple and orange > blue and color == 'orange'):
         $ player_color = 'orange'
     
+    define day = 0
+    while day < 4 * 7:
+        $ day += 1
+        hide screen quick_menu
+        scene black
+        hide screen blue_overlay onlayer sprites
+        with dissolve
+        pause(0.5)
+        python:
+            renpy.transition(dissolve)
+            renpy.show_screen('day', day)
+            renpy.play("assets/audio/rising_ping.mp3")
+            renpy.pause(2.3)
+            renpy.hide_screen('day')
+            renpy.transition(dissolve)
+            renpy.pause(0.8)
+            
+            renpy.call_screen('flat_navigation')
+            renpy.transition(dissolve)
+        call daily_event_chance
+
+screen day(day):
+    text "week [(day - 1) // 7 + 1] - day [(day - 1) % 7 + 1]" font "assets/fonts/KyivTypeSans-Light3.ttf" color "#DCE1E5" size 72 xalign 0.55 yalign 0.42
+    add "gui/window_icon.png" xalign 0.3 yalign 0.4 zoom 0.25 at crane_movement
+
+transform crane_movement:
+    rotate 0.0
+    pause(0.5)
+    rotate -6.0
+    pause(0.5)
+    rotate 0.0
+    pause(0.5)
+    rotate 6.0
+    pause(0.5)
+    repeat
