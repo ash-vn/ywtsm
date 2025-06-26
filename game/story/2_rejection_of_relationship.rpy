@@ -1,4 +1,5 @@
 label rejection_of_relationship:
+    scene door with dissolve
     """
     Your skin still crawls, but your rational brain latches onto one thought like a safety railing: ghost. 
 
@@ -42,8 +43,10 @@ label rejection_of_relationship:
     Before you can gasp, gravity yanks you backwards into a sharp, short tumble. 
     """
 
+    scene black with dissolve
     with hpunch
-
+    pause(0.5)
+    scene door with dissolve
     """
     But then you land into something warm and…soft? 
 

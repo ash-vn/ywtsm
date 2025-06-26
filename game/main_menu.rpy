@@ -67,9 +67,9 @@ label confirm_quit:
 
 label main_menu(load=True):
     # jump start  ###### DEBUGGGGG
-    define config.developer = False
-    # while True:
-    #     call screen flat_navigation
+    # define config.developer = False
+    while True:
+        call gallery
 
     hide blue_overlay
     scene black

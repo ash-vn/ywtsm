@@ -1,14 +1,85 @@
 image gallery_bg = 'gui/gallery bg.png'
 image HUD_Homescreen = "gui/HUD_Homescreen.png"
 
+define cg_list = [
+    {"name": 'MOMENT NAME MOMENT NAME', "date": None, 'file': 'test'},
+    {"name": 'dos', "date": None, 'file': 'test'},
+    {"name": 'tres', "date": None, 'file': 'test'},
+    {"name": 'cuatro', "date": None, 'file': 'test'},
+    {"name": 'cinco', "date": None, 'file': 'test'},
+    {"name": 'seis', "date": None, 'file': 'test'},
+    {"name": 'yks', "date": None, 'file': 'test'},
+    {"name": 'kaks', "date": None, 'file': 'test'},
+    {"name": 'kol', "date": None, 'file': 'test'},
+    {"name": 'nel', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+    {"name": 'None', "date": None, 'file': 'test'},
+]
+
 label gallery:
-    scene gallery_bg
-    call screen gallery_screen
-    call screen navigation
+    show screen gallery_button
+    scene gallery_bg with dissolve
+    define resized = []
+    python:
+        renpy.transition(dissolve)
+        renpy.call_screen('gallery_screen')
+        renpy.transition(dissolve)
+        renpy.call_screen('stripes_overlay')
+    return
+
+screen gallery_button:
+    if renpy.get_screen('gallery_screen'):
+        imagebutton auto "gui/gallery button %s.png" action Call("main_menu", load=False) at hover_enlarge_tilt yalign 0.83 xalign 0.07
 
 screen gallery_screen:
-    imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos, hover_enlarge_tilt
-    text "wow......so pretty..... (work in progress obviously)" yalign 0.4 xalign 0.6
+    # imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos, hover_enlarge_tilt
+
+    side "c r":
+        area (500, 40, 1420, 1040)
+
+        viewport id "custom_vp":
+            draggable True
+            mousewheel True
+            vbox:
+                spacing -100
+                for i in range(20):
+                    $ temp = [hover_enlarge,]
+                    if i % 2 != 0:
+                        $ temp.append(tilt)
+                    $ name = cg_list[i]['name'].upper()
+                    $ date = cg_list[i]['date'] or 'NOT UNLOCKED'
+                    $ filename = f"images/{cg_list[i]['file']}.png"
+                    imagebutton:
+                        at temp + [hover_enlarge]
+                        idle Fixed(
+                            "gui/gallery_frame.png",
+                            At(filename, gallery_cg_transform),
+                            Text([name, ' ' * (46 - len(name) - len(date)), date, '{size=54}\n' + f"{i + 1:02d}"],
+                                font=gui.text_font, xalign=0.2, yalign=0.85, size=32),
+                            xsize=961, ysize=715,
+                        )
+                        action NullAction()
+            
+
+        vbar value YScrollValue("custom_vp")
+
+transform tilt:
+    rotate -5
+
+transform gallery_cg_transform:
+    fit "contain"
+    xsize 842
+    ysize 446
+    yalign 0.13
+    xalign 0.3
 
 ###################################
 
@@ -26,6 +97,7 @@ label endings:
     python:
         renpy.transition(dissolve)
         renpy.call_screen('ending_screen')
+    return
 
 transform ending_pos:
     yalign 0.05

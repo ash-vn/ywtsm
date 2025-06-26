@@ -137,9 +137,10 @@ label pet_goldfish_1():
 
         "You look at the fish."
 
-        $ fish_name = renpy.input("What do you name it..?")
+        while not fish_name:
+            $ fish_name = renpy.input("What do you name it..?")
 
-    if fish_name.lower() == 'tragic':
+    if fish_name and fish_name.lower() == 'tragic':
 
         'Icarus smirks. You’re not sure why, but he seems extremely pleased with the name.' 
 
