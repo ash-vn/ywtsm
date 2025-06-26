@@ -1,6 +1,85 @@
 label meet_cute:
+    scene door with dissolve
+    """
+    You cough as dust from the boxes you're opening up rises, floating and shining under the morning sunlight. 
+
+    You were hoping the hassle of traveling would be less, and it was, but in exchange for the peace of your organized move, transport took longer than expected. 
+
+    Nevertheless, it's a good start to your new life.
+
+    After all, all you've wanted is peace, isn't it?
+
+    You hold out a plain shirt, observing it thoroughly. It's white, and it needs some cleaning up.  
+
+    You took the white soap and washed it yourself instead of throwing it into the washing machine, and it was hard to remove the stains. Nonetheless, it's back to its pristine state.
+
+    You smile faintly.
+
+    It was worth it.
+
+    You take a deep breath, basking in the pure perfume of the soap…
+    """
+    "???" "“Hmm, hmm, h-hmm, mhmm ♫♫♫”"
+
+    """
+    A humming.
+
+    You look out of the window, between curiosity and skepticism, carefully. 
+
+    Though it was eerie, the cheerful humming of the boy doesn't seem like a menace. It could be, as the fact that it comes seemingly from nowhere is slightly unsettling, at least to you.
+
+    The sound is…
+
+    Close? Far?
+
+    You can't quite pinpoint the space from which it echoes. You stealth-walk towards the spot you guessed at least close to the source. 
+
+    You were so quiet, each step of yours gingerly—
+
+    Thud. 
+    """
+    ILORA "“Hmm?”"
+    """
+    You didn't reach what you sought. Instead, you find a paper figure next to your foot, almost crushed under it. Maybe you stepped on it a bit. Yes, you stepped on a wing.
+
+    It's a paper crane, hidden in a corner where your window light —close but not quite— cannot unveil it.
+
+    Your eyebrows raise in curiosity, yet your lips downturn in pity at the sight of the abandoned, tiny piece of art.
+
+    Wanting to examine it further, you bend down.
+
+    You nearly pick it up, but then you sense something.
+
+    A presence.
+
+    Eyes following your gesture
+
+    Certain, your gaze darts to the window, or not the window per se, but at the corner of the frame where the curtain hangs. It's a long curtain, casting darkness beneath it…
+
+    And behind it.
+
+    You move it away, revealing nothing but the city street, and then it slides back into place.
+
+    Perturbed, you turn your attention back to the crane.
+
+    Your frown deepens.
+
+    The crane is gone.
+
+    You tense at the soft rustle of paper. You're not alone, of that you're certain. A burglar, a rather unfortunate one, evidently, or a creep. 
+
+    They're hiding behind the spot where you previously felt you were being watched, and you had checked. Strange, as now there's a perfectly outlined silhouette exposing the hiding person.
+
+    Regardless, you trust the good old method: use the element of surprise.
+
+    You approach again, ready to jerk the curtain out of the way, but your eyes look down. You remain rooted to your spot, holding your breath at the sight. 
+
+    It's nothing horrible or gruesome. No, it's about a shadow, or rather the lack of it. 
+
+    You realize now, the person behind that curtain has no shadow. However, you can see the distorted yet identifiable paper crane's shadow. Peering more closely, you also notice the person, if they can be called that, is holding the design.
+
+    """
     menu:
-        "You realize now, the person behind that curtain has no shadow. However, you can see the distorted yet identifiable paper crane's shadow. Peering more closely, you also notice the person, if they can be called that, is holding the design."
         "You ‘saw nothing’.":
             """
             You know what? You're not in the mood to deal with any intruders.

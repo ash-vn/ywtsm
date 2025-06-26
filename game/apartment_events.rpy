@@ -4,40 +4,64 @@ image desk = 'gui/apartment/desk.png'
 image kitchen = 'gui/apartment/kitchen.png'
 image lounge = 'gui/apartment/lounge.png'
 image outside = 'gui/apartment/outside.png'
+image door = 'gui/apartment/door.png'
+image flat = "gui/HUD_Homescreen.png"
 
-define daily_events = [
-    [["", "Icarus decided to spook you!"], ["ICARUS", "Boo!"], ["", "You got scared!"]],
-    [["", "Icarus hugged you from behind."], ["", "Your heart just melted!"]], 
-[["", "Event 3"]],
-[["", "Event 4"]],
-[["", "Event 5"]],
-[["", "Event 6"]],
-[["", "Event 7"]],
-[["", "Event 8"]],
-]
+image base = "images/daily_event_art/base.png"
+image clean_art = "images/daily_event_art/2.png"
+image desk_art = "images/daily_event_art/0.png"
+image desk_art_work = "images/daily_event_art/4.png"
+image bed_art = "images/daily_event_art/1.png"
+image bed_art_book = "images/daily_event_art/6.png"
+image balcony_art = "images/daily_event_art/3.png"
+image lounge_art = "images/daily_event_art/5.png"
+image kitchen_art = "images/daily_event_art/7.png"
 
 define balcony_list = [
     "You decide to get some fresh air.",
+    "You look at the people, trying to figure out their lives from their appearance.",
+    "You fold the laundry that has been drying on the balcony.",
+    "You put the laundry on the balcony to dry."
 ]
 define balcony_outcomes = [
-    "Your neighbor is smoking, and you decide to head back.",
+    "Your neighbor is smoking, though, and Icarus wants to head back, worried for your health.",
+    "Icarus joins you with a melancholic look in his eyes.",
+    "Icarus keeps telling you how he would spook the people outside if he could leave the flat.",
+    "Icarus insists on keeping you company.",
 ]
 
 define bed_list = [
-    "You decide to go to sleep.",
+    "You found something interesting while browsing the net on your phone.",
+    "You found something funny while reading a book about cats.",
+    "You are tired and just want to sleep all the day... {w=0.5}you still end up doomscrolling on your phone.",
+    "You are tired and just want to sleep all the day... {w=0.5}and that's what you do, drifting off to sleep.",
+    "You remember to write your journal entry for the day.",
+    "While you are reading, you find a note slipped inside.",
 ]
 define bed_outcomes = [
-    "You end up cuddling with Icarus.",
-    "You have insomnia for the whole night :(:(:(:(.",
-    "You get gay disese"
+    "You end up falling asleep and Icarus shrugs it off.",
+    "You end up falling asleep and Icarus also fell asleep nearby.",
+    "Having Icarus around makes you happy.",
+    "You found that Icarus doodled there.",
+    "Icarus shrugged off your behavior.",
+    "Icarus approved your behavior, nodding his head.",
+    "You are reminded of Icarus.",
 ]
 
 define desk_list = [
     "You decide to work on your laptop.",
+    "You check out what movies have been released recently.",
+    "You decide to study for a bit.",
+    "You start your favorite game. As soon as you hear the familiar soundtrack, you feel right at home. {w}Which, technically, you are.",
+    "You start your favorite multiplayer game and invite your friends.",
+    "You fold a paper crane.",
 ]
 define desk_outcomes = [
-    "Icarus startles you, and you end up erasing your work for the last hour! Luckily, there's an undo button.",
+    "Icarus startles you, and you end up erasing your work for the last hour! {w}Luckily, there's an undo button.",
     "Icarus looks at your screen with childlike curiosity.",
+    "Icarus keeps distracting you, but you still manage to not lose focus!",
+    "Icarus keeps distracting you. You don't have the strength to refuse such a cutiepie and close your laptop.",
+    "Icarus joins you.",
 ]
 
 define kitchen_list = [
@@ -60,9 +84,15 @@ define kitchen_outcomes = [
 
 define lounge_list = [
     "You decide to watch a movie that's been dusting forever on your watchlist.",
+    "You just chill on your couch, resting after a hard day of work.",
+    "You notice a patch of dirt on the floor and end up cleaning the whole flat...",
 ]
 define lounge_outcomes = [
-    "Icarus tries to cuddle with you, but ends up going right through your skin.",
+    "Icarus looks at what you do with puppy eyes",
+    "Icarus tries to scoot closer to you.",
+    "Icarus is excited to see you having fun.",
+    "Icarus is glad to see you not working.",
+    "Icarus does not leave your side.",
 ]
 
 label balcony:
@@ -70,8 +100,26 @@ label balcony:
     scene balcony with dissolve
     python:
         from random import choice, randint
-        renpy.say("", choice(balcony_list))
-        renpy.say("", choice(balcony_outcomes))
+        
+        start = choice(balcony_list)
+        end = choice(balcony_outcomes)
+        location = 'balcony'
+
+        renpy.show('base', layer='sprites', at_list=[paper])
+        renpy.transition(easeinbottom, layer='sprites')
+        if "clean" not in start:
+            cur_img = f'{location}_art'
+        else:
+            cur_img = 'clean_art'
+            
+        renpy.show(f'{cur_img}', layer='sprites', at_list=[chibi_art])
+        renpy.transition(easeinbottom, layer='sprites')
+        renpy.say("", start)
+        renpy.say("", end)
+        renpy.hide('base', layer='sprites')
+        renpy.hide(f'{cur_img}', layer='sprites')
+        renpy.transition(dissolve, layer='sprites')
+        renpy.pause(0.6)
     return
 
 label bed:
@@ -79,8 +127,28 @@ label bed:
     scene bed with dissolve
     python:
         from random import choice, randint
-        renpy.say("", choice(bed_list))
-        renpy.say("", choice(bed_outcomes))
+        
+        start = choice(bed_list)
+        end = choice(bed_outcomes)
+        location = 'bed'
+
+        renpy.show('base', layer='sprites', at_list=[paper])
+        renpy.transition(easeinbottom, layer='sprites')
+        if "clean" in start:
+            cur_img = 'clean_art'
+        elif any(act in start for act in ["book", "journal", 'phone']):
+            cur_img = 'bed_art_book'
+        else:
+            cur_img = f'{location}_art'
+
+        renpy.show(f'{cur_img}', layer='sprites', at_list=[chibi_art])
+        renpy.transition(easeinbottom, layer='sprites')
+        renpy.say("", start)
+        renpy.say("", end)
+        renpy.hide('base', layer='sprites')
+        renpy.hide(f'{cur_img}', layer='sprites')
+        renpy.transition(dissolve, layer='sprites')
+        renpy.pause(0.6)
     return
 
 label desk:
@@ -88,8 +156,28 @@ label desk:
     scene desk with dissolve
     python:
         from random import choice, randint
-        renpy.say("", choice(desk_list))
-        renpy.say("", choice(desk_outcomes))
+        
+        start = choice(desk_list)
+        end = choice(desk_outcomes)
+        location = 'desk'
+
+        renpy.show('base', layer='sprites', at_list=[paper])
+        renpy.transition(easeinbottom, layer='sprites')
+        if "clean" in start:
+            cur_img = 'clean_art'
+        elif any(act in start for act in ["work", "study", "screen"]):
+            cur_img = 'desk_art_work'
+        else:
+            cur_img = f'{location}_art'
+
+        renpy.show(f'{cur_img}', layer='sprites', at_list=[chibi_art])
+        renpy.transition(easeinbottom, layer='sprites')
+        renpy.say("", start)
+        renpy.say("", end)
+        renpy.hide('base', layer='sprites')
+        renpy.hide(f'{cur_img}', layer='sprites')
+        renpy.transition(dissolve, layer='sprites')
+        renpy.pause(0.6)
     return
 
 label kitchen:
@@ -97,8 +185,26 @@ label kitchen:
     scene kitchen with dissolve
     python:
         from random import choice, randint
-        renpy.say("", choice(kitchen_list))
-        renpy.say("", choice(kitchen_outcomes))
+        
+        start = choice(kitchen_list)
+        end = choice(kitchen_outcomes)
+        location = 'kitchen'
+
+        renpy.show('base', layer='sprites', at_list=[paper])
+        renpy.transition(easeinbottom, layer='sprites')
+        if "clean" in start:
+            cur_img = 'clean_art'
+        else:
+            cur_img = f'{location}_art'
+
+        renpy.show(f'{cur_img}', layer='sprites', at_list=[chibi_art])
+        renpy.transition(easeinbottom, layer='sprites')
+        renpy.say("", start)
+        renpy.say("", end)
+        renpy.hide('base', layer='sprites')
+        renpy.hide(f'{cur_img}', layer='sprites')
+        renpy.transition(dissolve, layer='sprites')
+        renpy.pause(0.6)
     return
 
 label lounge:
@@ -106,8 +212,26 @@ label lounge:
     scene lounge with dissolve
     python:
         from random import choice, randint
-        renpy.say("", choice(lounge_list))
-        renpy.say("", choice(lounge_outcomes))
+        
+        start = choice(lounge_list)
+        end = choice(lounge_outcomes)
+        location = 'lounge'
+
+        renpy.show('base', layer='sprites', at_list=[paper])
+        renpy.transition(easeinbottom, layer='sprites')
+        if "clean" in start:
+            cur_img = 'clean_art'
+        else:
+            cur_img = f'{location}_art'
+
+        renpy.show(f'{cur_img}', layer='sprites', at_list=[chibi_art])
+        renpy.transition(easeinbottom, layer='sprites')
+        renpy.say("", start)
+        renpy.say("", end)
+        renpy.hide('base', layer='sprites')
+        renpy.hide(f'{cur_img}', layer='sprites')
+        renpy.transition(dissolve, layer='sprites')
+        renpy.pause(0.6)
     return
 
 label outside:
@@ -120,7 +244,7 @@ label outside:
         "Do you really want to go outside and leave Icarus alone at home?"
         "Yes.":
             "You leave Icarus alone for some time."
-            if last_aff_level != max_aff_level:
+            if cur_aff_level != max_aff_level:
                 "Surely nothing will happen, right?"
         "No. Let me get back to the apartment.":
             "You decide to go out... some other day."
@@ -138,33 +262,3 @@ transform chibi_art:
 transform paper:
     yalign 0.3
     xalign 0.5
-
-label daily_event_chance:
-    image base = "images/daily_event_art/base.png"
-    image flat = "gui/HUD_Homescreen.png"
-    image im0 = "images/daily_event_art/0.png"
-    image im1 = "images/daily_event_art/1.png"
-    image im2 = "images/daily_event_art/2.png"
-    image im3 = "images/daily_event_art/3.png"
-    image im4 = "images/daily_event_art/4.png"
-    image im5 = "images/daily_event_art/5.png"
-    image im6 = "images/daily_event_art/6.png"
-    image im7 = "images/daily_event_art/7.png"
-    # scene flat
-    python:
-        from random import choice, randint
-        chance = randint(0, 8)
-        if chance <= 7:
-            renpy.show('base', layer='sprites', at_list=[paper])
-            renpy.transition(easeinbottom, layer='sprites')
-            renpy.show(f'im{chance}', layer='sprites', at_list=[chibi_art])
-            renpy.transition(easeinbottom, layer='sprites')
-            # renpy.show(f)
-            renpy.say(daily_events[chance][0][0], daily_events[chance][0][1])
-            for e in daily_events[chance]:
-                renpy.say(e[0], e[1])
-            renpy.hide('base', layer='sprites')
-            renpy.hide(f'im{chance}', layer='sprites')
-            renpy.transition(dissolve, layer='sprites')
-            renpy.pause(0.6)
-    return

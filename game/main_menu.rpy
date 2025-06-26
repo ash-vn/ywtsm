@@ -67,7 +67,7 @@ label confirm_quit:
 
 label main_menu(load=True):
     # jump start  ###### DEBUGGGGG
-    # define config.developer = False
+    define config.developer = False
     # while True:
     #     call screen flat_navigation
 

@@ -3,7 +3,12 @@ image HUD_Homescreen = "gui/HUD_Homescreen.png"
 
 label gallery:
     scene gallery_bg
+    call screen gallery_screen
     call screen navigation
+
+screen gallery_screen:
+    imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos, hover_enlarge_tilt
+    text "wow......so pretty..... (work in progress obviously)" yalign 0.4 xalign 0.6
 
 ###################################
 
