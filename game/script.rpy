@@ -1,7 +1,6 @@
 ﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
-define e = Character("EILEEN")
 # image hiyori = Live2D("sprites/hiyori", base=.8, loop=True)
 # show hiyori m01 onlayer sprites
 

@@ -33,7 +33,7 @@ screen navigation():
         vbox:
             yalign 0.66
             xalign 0.96
-            imagebutton auto "gui/options %s.png" action ShowMenu("preferences") at hover_enlarge_tilt
+            imagebutton auto "gui/options %s.png" action Call("preferences") at hover_enlarge_tilt
         vbox:
             yalign 0.84
             xalign 0.96
@@ -68,10 +68,11 @@ label confirm_quit:
 label main_menu(load=True):
     # jump start  ###### DEBUGGGGG
     # define config.developer = False
-    while True:
-        call gallery
+    # while True:
+    #     call gallery
 
     hide blue_overlay
+    hide stripes_overlay
     scene black
     if load:
         pause(0.5)

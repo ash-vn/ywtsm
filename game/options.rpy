@@ -7,6 +7,7 @@
 init:
     define config.layers = [ 'master', 'transient', 'sprites', 'screens', 'ontop' ]
 ##### im tweaking
+default vo_lang = 'en'
 
 ## Basics ######################################################################
 
@@ -152,7 +153,7 @@ define config.save_directory = "youwanttoseeme-1750346234"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/icon.ico"
 
 
 ## Build configuration #########################################################

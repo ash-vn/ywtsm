@@ -40,7 +40,6 @@ screen gallery_button:
         imagebutton auto "gui/gallery button %s.png" action Call("main_menu", load=False) at hover_enlarge_tilt yalign 0.83 xalign 0.07
 
 screen gallery_screen:
-    # imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at ending_go_back_pos, hover_enlarge_tilt
 
     side "c r":
         area (500, 40, 1420, 1040)
@@ -75,7 +74,7 @@ transform tilt:
     rotate -5
 
 transform gallery_cg_transform:
-    fit "contain"
+    fit "cover"
     xsize 842
     ysize 446
     yalign 0.13
@@ -177,3 +176,204 @@ transform lounge_pos:
     linear 1.0 yalign 0.7
     linear 1.0 yalign 0.71
     repeat
+
+###################################
+
+label preferences:
+    image options_bg = "gui/options bg.png"
+    image options_paper = "gui/options paper.png"
+    define pref_tab = "audio"
+
+    scene options_bg with dissolve
+    hide screen blue_overlay onlayer sprites with dissolve
+    python:
+        renpy.transition(easeinbottom)
+        renpy.show('options_paper')
+        renpy.call_screen('preferences_screen', onlayer='ontop')
+    scene -options_bg with dissolve
+    return
+
+transform prefs_go_back_pos:
+    yalign 0.1
+    linear 1.0 xalign 0.01
+    linear 1.0 xalign 0.015
+    repeat
+
+style pref_buttons:
+    font gui.text_font
+    size 24
+    # padding (150, 10)
+    xsize 220
+    ysize 48
+    background "#0C2B43"
+    hover_background "#425FFF"
+    selected_background "#425FFF"
+    activate_sound "assets/audio/click_hard.mp3"
+
+label change_resolution(width=1920, height=1080):
+    $ config.screen_width = width
+    $ config.screen_height = height
+    return
+
+screen preferences_screen:
+    tag menu
+    if renpy.call_stack_depth():
+        imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at prefs_go_back_pos, hover_enlarge_tilt
+    else:
+        imagebutton auto "gui/button/go back button %s.png" action [Hide("preferences_screen", transition=easeoutbottom), Return()] at prefs_go_back_pos, hover_enlarge_tilt
+
+    vbox:
+        yalign 0.37
+        xalign 0.15
+        spacing 20
+        textbutton "AUDIO" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SelectedIf(SetVariable("pref_tab", "audio"))
+        textbutton "GRAPHICS" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SetVariable("pref_tab", "graphics")
+        textbutton "LANGUAGE" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SetVariable("pref_tab", "language")
+        textbutton "CREDITS" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SetVariable("pref_tab", "credits")
+    
+    vbox:
+        ypos 300
+        xpos 600
+        xsize 1200
+        text pref_tab.upper() size 40 font gui.name_text_font
+        text " "
+
+        if pref_tab == "audio":
+            hbox:
+                spacing 20
+                vbox:
+                    spacing 14
+                    text "Music Volume" font gui.text_font size 32
+                    text "Sound Volume" font gui.text_font size 32
+                    text "Voice Volume" font gui.text_font size 32
+                    text " "
+                    textbutton _("Mute All"):
+                        action Preference("all mute", "toggle")
+                        style "pref_buttons"
+                        text_align (0.5, 0.5)
+                        text_color "#DCE1E5"
+
+                vbox:
+                    spacing 14
+                    bar value Preference("music volume")
+                    bar value Preference("sound volume")
+                    bar value Preference("voice volume")
+
+        elif pref_tab == "graphics":
+            hbox:
+                spacing 20
+                vbox:
+                    spacing 14
+                    text _("Display")  font gui.text_font size 32
+                    text _("Resolution")  font gui.text_font size 32
+
+                vbox:
+                    spacing 14
+                    xpos 50
+                    hbox:
+                        xsize 500
+                        textbutton _("Window"):
+                            action [Preference("display", "window"), SelectedIf(not preferences.fullscreen)]
+                            style "pref_buttons"
+                            text_align (0.5, 0.5)
+                            text_color "#DCE1E5"
+                        textbutton _("Fullscreen"):
+                            action Preference("display", "fullscreen")
+                            style "pref_buttons"
+                            text_align (0.5, 0.5)
+                            text_color "#DCE1E5"
+                    hbox:
+                        xsize 1000
+                        for res in [(1280, 720), (1366, 768), (1600, 900), (1920, 1080)]:
+                            textbutton "[res[0]]x[res[1]]":
+                                action SelectedIf(Preference("display", res[0]/1920))
+                                style "pref_buttons"
+                                text_align (0.5, 0.5)
+                                text_color "#DCE1E5"
+
+        elif pref_tab == "language":
+            hbox:
+                vbox:
+                    spacing 14
+                    text "Text" font gui.text_font size 32
+                    text "Voice Over" font gui.text_font size 32
+
+                vbox:
+                    xsize 900
+                    xpos 50
+                    spacing 14
+                    hbox:
+                        textbutton _("English"):
+                            action Language(None)
+                            style "pref_buttons"
+                            text_align (0.5, 0.5)
+                            text_color "#DCE1E5"
+                        textbutton _("Korean"):
+                            action Language('korean')
+                            style "pref_buttons"
+                            text_align (0.5, 0.5)
+                            text_color "#DCE1E5"
+                    hbox:
+                        textbutton _("English"):
+                            action SetVariable('vo_lang', "en")
+                            style "pref_buttons"
+                            text_align (0.5, 0.5)
+                            text_color "#DCE1E5"
+                        textbutton _("Korean"):
+                            action SetVariable('vo_lang', "kr")
+                            style "pref_buttons"
+                            text_align (0.5, 0.5)
+                            text_color "#DCE1E5"
+
+        elif pref_tab == "credits":
+            side "c r":
+                viewport id "credit_vp":
+                    area (-10, -10, 1200, 600)
+                    mousewheel True
+                    draggable True
+                    grid 4 3:
+                        spacing 30
+                        top_margin 10
+                        left_margin 10
+                        for guy in creditors:
+                            $ filename = f"gui/credits/{guy['picture']}.png"
+                            vbox:
+                                xsize 235
+                                ysize 351
+                                fixed:
+                                    xsize 235
+                                    ysize 235
+                                    imagebutton idle filename at credit_pic action OpenURL(guy['link'])
+                                text guy['name'] align (0.5, 0.5) size 32 font gui.name_text_font
+                                for role in guy['role'].split('\n'):
+                                    text role align (0.5, 0.5) size 20
+
+                vbar value YScrollValue("credit_vp")
+
+
+transform credit_pic:
+    # fit "cover"
+    xsize 235
+    ysize 235
+    on hover:
+        linear 0.1:
+            truecenter
+            zoom 1.05
+    on idle:
+        linear 0.1:
+            truecenter
+            zoom 1.00
+
+define creditors = [
+    {'name': 'NKD', 'picture': 'test', 'role': 'Project Manager\nCG & sprite artist', 'link': None},
+    {'name': 'Whilo', 'picture': 'test', 'role': 'Chibi Artist', 'link': None},
+    {'name': 'Enim', 'picture': 'test', 'role': 'CG Artist', 'link': None},
+    {'name': 'Nuria', 'picture': 'test', 'role': '3D Artist', 'link': None},
+    {'name': 'Leny', 'picture': 'test', 'role': 'UI design', 'link': None},
+    {'name': 'Tia_Faisa', 'picture': 'test', 'role': 'Live2D rigging', 'link': None},
+    {'name': 'Eidolethe', 'picture': 'test', 'role': 'Writing', 'link': None},
+    {'name': 'The Sloth', 'picture': 'test', 'role': 'Writing', 'link': None},
+    {'name': 'Andry', 'picture': 'test', 'role': 'Composer', 'link': None},
+    {'name': 'Haikeus', 'picture': 'test', 'role': 'Programmer', 'link': None},
+    {'name': 'EPI', 'picture': 'EPI', 'role': 'Korean translator', 'link': 'https://epi-zh.itch.io/'},
+]
