@@ -1,7 +1,7 @@
 ﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
-
+define config.developer = True
 label start:  # main game logic loop lives here
     show screen blue_overlay onlayer sprites
     show screen stripes_overlay
@@ -23,7 +23,7 @@ label start:  # main game logic loop lives here
         $ player_color = 'orange'
     
     define day = 0
-    while day < (4 * 7 + 1):
+    while day < 4 * 7:
         $ day += 1
         $ week = (day - 1) // 7 + 1
         $ week_day  = (day - 1) % 7 + 1
@@ -50,39 +50,10 @@ label start:  # main game logic loop lives here
             call pet_goldfish_2 from _call_pet_goldfish_2
         elif week == 4 and week_day == 5:
             call just_a_friend from _call_just_a_friend
-        elif not week == 5:
+        else:
             python:
                 renpy.call_screen('flat_navigation')
                 renpy.transition(dissolve)
-
-    call midpoint_crisis from _call_midpoint_crisis
-    call pulling_back_together from _call_pulling_back_together
-
-    while day < (5 * 7 + 1):
-        $ day += 1
-        $ week = (day - 1) // 7 + 1
-        $ week_day  = (day - 1) % 7 + 1
-        hide screen quick_menu
-        scene black
-        hide screen blue_overlay onlayer sprites
-        with dissolve
-        pause(0.5)
-
-        python:
-            renpy.transition(dissolve)
-            renpy.show_screen('day', day)
-            renpy.play("assets/audio/rising_ping.mp3")
-            renpy.pause(2.3)
-            renpy.hide_screen('day')
-            renpy.transition(dissolve)
-            renpy.pause(0.8)
-
-            if week != 6:
-                renpy.call_screen('flat_navigation')
-                renpy.transition(dissolve)
-
-    call the_fall from _call_the_fall
-    return
 
 screen day(day):
     text "week [(day - 1) // 7 + 1] - day [(day - 1) % 7 + 1]" font "assets/fonts/KyivTypeSans-Light3.ttf" color "#DCE1E5" size 72 xalign 0.55 yalign 0.42

@@ -17,19 +17,6 @@ image balcony_art = "images/daily_event_art/3.png"
 image lounge_art = "images/daily_event_art/5.png"
 image kitchen_art = "images/daily_event_art/7.png"
 
-init python:
-    image_paths = {
-        "base": "images/daily_event_art/base.png",
-        "clean_art": "images/daily_event_art/2.png", 
-        "desk_art": "images/daily_event_art/0.png",
-        "desk_art_work": "images/daily_event_art/4.png",
-        "bed_art": "images/daily_event_art/1.png",
-        "bed_art_book": "images/daily_event_art/6.png",
-        "balcony_art": "images/daily_event_art/3.png",
-        "lounge_art": "images/daily_event_art/5.png",
-        "kitchen_art": "images/daily_event_art/7.png"
-    }
-
 define balcony_list = [
     "You decide to get some fresh air.",
     "You look at the people, trying to figure out their lives from their appearance.",
@@ -133,7 +120,6 @@ label balcony:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
-    call unlock_cg(image_paths[cur_img])
     return
 
 label bed:
@@ -163,7 +149,6 @@ label bed:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
-    call unlock_cg(image_paths[cur_img])
     return
 
 label desk:
@@ -193,7 +178,6 @@ label desk:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
-    call unlock_cg(image_paths[cur_img])
     return
 
 label kitchen:
@@ -221,7 +205,6 @@ label kitchen:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
-    call unlock_cg(image_paths[cur_img])
     return
 
 label lounge:
@@ -249,7 +232,6 @@ label lounge:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
-    call unlock_cg(image_paths[cur_img])
     return
 
 label outside:

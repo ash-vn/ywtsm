@@ -19,7 +19,7 @@ label meet_cute:
 
     You take a deep breath, basking in the pure perfume of the soap…
     """
-    "???" "“Hmm, hmm, h-hmm, mhmm~”"
+    "???" "“Hmm, hmm, h-hmm, mhmm ♫♫♫”"
 
     """
     A humming.
@@ -52,7 +52,7 @@ label meet_cute:
 
     A presence.
 
-    Eyes following your gesture.
+    Eyes following your gesture
 
     Certain, your gaze darts to the window, or not the window per se, but at the corner of the frame where the curtain hangs. It's a long curtain, casting darkness beneath it…
 

@@ -1,4 +1,4 @@
-label pulling_back_together:
+label pulling_back_together_1:
     """
     Icarus is curled up on the floor beside the coffee table, surrounded by a growing scatter of cranes. His hands move on instinct now — fold, crease, fold again.
 
@@ -11,7 +11,7 @@ label pulling_back_together:
 
     ILORA "(Perhaps the earlier panic was unwarranted?)"
 
-    show icarus at icarus_transform with dissolve
+    show icarus cheerful with dissolve
     ICARUS "“Eight hundred ninety-four.”"
 
     "He looks at you with hopeful eyes." 

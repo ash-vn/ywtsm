@@ -90,14 +90,6 @@ label the_fall:
                     jump end14
                 elif player_color == 'orange':
                     jump end15
-        
-        "“I wish for you to stay.”" if high_affinity:
-            if player_color == 'blue':
-                jump end03
-            elif player_color == 'purple':
-                jump end04
-            elif player_color == 'orange':
-                jump end05
     return
 
 label end06:
@@ -128,7 +120,7 @@ label end06:
     ILORA "“Seems like I can use these for my air freshener decorations.” "
 
     # [Cut to ending with a deadpan face 🗿]
-    call ending('06') from _call_ending_4
+    return
 
 
 label end07:
@@ -163,8 +155,7 @@ label end07:
     "A single tear slides down your cheeks. "
 
     # [Cut to ending where “I MOURN YOU” appears in gothic cursive, with glittering overlay and a looping sad flute sound.]
-    
-    call ending('07') from _call_ending_5
+    return
 
 
 label end08:
@@ -174,8 +165,8 @@ label end08:
 
     ICARUS "“What?”"
 
-    ILORA "“We’re not ending your haunting career with you sadly folding yourself out of existence.”"
-
+    ILORA "“We’re not ending your haunting career with you sadly folding yourself out of existence.”
+"
     ILORA "“If you’re going, we’ll make sure you go out in style.”"
 
     "You rummage around the drawer for tacks, twine, washi tape, whatever’s on hand. "
@@ -226,7 +217,7 @@ label end08:
 
     ILORA "“...what should i do now? You… really left me with all these cranes.. It’s too much, it might fit a baggage.”"
 
-    call ending('08') from _call_ending_6
+    return
 
 label end13:
     "He lets out a breath — too light for lungs. Just the idea of one."
@@ -251,8 +242,7 @@ label end13:
     "You look around."
     ILORA "“Was I even spelling Icarus right this whole time?”"
     "You crouch down next to it, hug your knees, and sigh."
-    
-    call ending('13') from _call_ending_7
+    return
 
 label end14:
     "Outside, the storm that had been hammering the world just… stops."
@@ -276,7 +266,7 @@ label end14:
     ILORA "“Fly safe, Icarus.”"
     "And for once, he does."
 
-    call ending('14') from _call_ending_8
+    return
 
 label end15:
     "You open your mouth."
@@ -315,7 +305,4 @@ label end15:
 
     ICARUS "“Until your time is up. Until forever, if you want.”"
 
-    scene black with Dissolve(5.0)
-    #### FIX PROBABLY
-    # call ending('06')
     return

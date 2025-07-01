@@ -1,27 +1,27 @@
 image gallery_bg = 'gui/gallery bg.png'
 image HUD_Homescreen = "gui/HUD_Homescreen.png"
 
-default persistent.cg_list = [
-    # {"name": 'First Meeting', "date": None, 'file': 'placeholder'},
-    {"name": 'Activity - Making Paper Cranes', "date": None, 'file': 'daily_event_art/0'},
-    {"name": 'Activity - Scrolling Fun', "date": None, 'file': 'daily_event_art/1'},
-    {"name": 'Activity - Cleaning Time', "date": None, 'file': 'daily_event_art/2'},
-    {"name": 'Activity - Laundry Folding', "date": None, 'file': 'daily_event_art/3'},
-    {"name": 'Activity - Working Late', "date": None, 'file': 'daily_event_art/4'},
-    {"name": 'Activity - TV Coziness', "date": None, 'file': 'daily_event_art/5'},
-    {"name": 'Activity - Dear Diary', "date": None, 'file': 'daily_event_art/6'},
-    {"name": 'Activity - Cooking Together', "date": None, 'file': 'daily_event_art/7'},
-    {"name": "It's Been So Long", "date": None, 'file': 'endings/END06'},
-    {"name": "I mourn you", "date": None, 'file': 'endings/END07'},
-    {"name": "Us no more", "date": None, 'file': 'endings/END09'},
-    {"name": "Stuck in place", "date": None, 'file': 'endings/END10'},
-    {"name": "And like everybody", "date": None, 'file': 'endings/END11'},
-    {"name": "Ghosting is a common", "date": None, 'file': 'endings/END12'},
-    {"name": "Love letter in the drawer", "date": None, 'file': 'endings/END13'},
-    {"name": "Rain eventually stops as well", "date": None, 'file': 'endings/END14'},
-    # {"name": "Marshmallows x Chocolate", "date": None, 'file': 'placeholder'},
-    # {"name": "Toast x Toaster", "date": None, 'file': 'placeholder'},
-    # {"name": "Chocolate x Valentines", "date": None, 'file': 'placeholder'},
+define cg_list = [
+    {"name": 'MOMENT NAME MOMENT NAME', "date": None, 'file': 'placeholder'},
+    {"name": 'dos', "date": None, 'file': 'placeholder'},
+    {"name": 'tres', "date": None, 'file': 'placeholder'},
+    {"name": 'cuatro', "date": None, 'file': 'placeholder'},
+    {"name": 'cinco', "date": None, 'file': 'placeholder'},
+    {"name": 'seis', "date": None, 'file': 'placeholder'},
+    {"name": 'yks', "date": None, 'file': 'placeholder'},
+    {"name": 'kaks', "date": None, 'file': 'placeholder'},
+    {"name": 'kol', "date": None, 'file': 'placeholder'},
+    {"name": 'nel', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
+    {"name": 'None', "date": None, 'file': 'placeholder'},
 ]
 
 label gallery:
@@ -48,16 +48,16 @@ screen gallery_screen:
             mousewheel True
             vbox:
                 spacing -100
-                for i in range(len(persistent.cg_list)):
+                for i in range(20):
                     $ temp = [hover_enlarge,]
                     if i % 2 != 0:
                         $ temp.append(tilt)
-                    $ name = persistent.cg_list[i]['name'].upper()
-                    $ date = persistent.cg_list[i]['date'] or 'NOT UNLOCKED'
-                    $ filename = f"images/{persistent.cg_list[i]['file']}.png"
-                    if persistent.cg_list[i]['date']:
+                    $ name = cg_list[i]['name'].upper()
+                    $ date = cg_list[i]['date'] or 'NOT UNLOCKED'
+                    $ filename = f"images/{cg_list[i]['file']}.png"
+                    if cg_list[i]['date']:
                         imagebutton:
-                            at temp
+                            at temp + [hover_enlarge]
                             idle Fixed(
                                 "gui/gallery_frame.png",
                                 At(filename, gallery_cg_transform),
@@ -66,9 +66,9 @@ screen gallery_screen:
                                 xsize=961, ysize=715,
                             )
                             action Show(screen="gallery_view", transition=dissolve, filename=filename)
-                    elif i < 17:
+                    else:
                         imagebutton:
-                            at temp
+                            at temp + [hover_enlarge]
                             idle Fixed(
                                 "gui/gallery_frame.png",
                                 At(filename, gallery_cg_transform, gallery_cg_locked_transform),
@@ -88,14 +88,14 @@ transform tilt:
     rotate -5
 
 transform gallery_cg_transform:
-    fit "fill"
+    fit "cover"
     xsize 842
     ysize 446
     yalign 0.13
     xalign 0.3
 
 transform gallery_cg_locked_transform:
-    blur 50
+    blur 16
 
 ###################################
 
@@ -196,18 +196,18 @@ transform lounge_pos:
 
 ###################################
 
-image options_bg = "gui/options bg.png"
-image options_paper = "gui/options paper.png"
 label preferences:
+    image options_bg = "gui/options bg.png"
+    image options_paper = "gui/options paper.png"
     define pref_tab = "audio"
 
-    scene options_bg onlayer screens with dissolve
+    scene options_bg with dissolve
     hide screen blue_overlay onlayer sprites with dissolve
     python:
         renpy.transition(easeinbottom)
-        renpy.show('options_paper', layer='screens')
-        renpy.call_screen('preferences_screen')
-    scene -options_bg onlayer screens with dissolve
+        renpy.show('options_paper')
+        renpy.call_screen('preferences_screen', onlayer='ontop')
+    scene -options_bg with dissolve
     return
 
 transform prefs_go_back_pos:
@@ -236,11 +236,7 @@ default cur_name = None
 screen preferences_screen:
     tag menu
     if renpy.call_stack_depth():
-        imagebutton auto "gui/button/go back button %s.png" action [Function(renpy.hide, 'options_paper', layer='screens'),
-                                                                    Function(renpy.hide, 'options_bg', layer='screens'), 
-                                                                    Hide("preferences_screen", transition=easeoutbottom),
-                                                                    Call("main_menu", load=False)
-                                                                    ] at prefs_go_back_pos, hover_enlarge_tilt
+        imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at prefs_go_back_pos, hover_enlarge_tilt
     else:
         imagebutton auto "gui/button/go back button %s.png" action [Hide("preferences_screen", transition=easeoutbottom), Return()] at prefs_go_back_pos, hover_enlarge_tilt
 
@@ -401,7 +397,7 @@ screen preferences_screen:
                         for guy in creditors:
                             $ filename = f"gui/credits/{guy['picture']}.png"
                             vbox:
-                                xsize 250
+                                xsize 235
                                 ysize 351
                                 fixed:
                                     xsize 235
@@ -431,16 +427,16 @@ transform credit_pic:
 
 define creditors = [
     {'name': 'NKD', 'picture': 'NKD', 'role': 'Game Director\nCG & sprite artist', 'link': 'https://x.com/enkadenka'},
-    {'name': 'Whilo', 'picture': 'Whilo', 'role': 'Chibi Artist', 'link': 'https://x.com/Whilo_art'},
+    {'name': 'Whilo', 'picture': 'test', 'role': 'Chibi Artist', 'link': None},
     {'name': 'Enim', 'picture': 'Enim', 'role': 'Chibi Artist', 'link': 'https://www.instagram.com/lorddarkness12600bcxviii/'},
     {'name': 'nuriatheartist', 'picture': 'Nuria', 'role': '3D Artist', 'link': 'https://nuriatheartist.carrd.co/'},
     {'name': 'Leny', 'picture': 'Leny', 'role': 'UI designer', 'link': 'https://www.instagram.com/rann51_/'},
     {'name': 'Tia', 'picture': 'Tia', 'role': 'Live2D rigging', 'link': 'https://www.instagram.com/tia_faisa'},
-    {'name': 'Eidolethe', 'picture': 'Eidolethe', 'role': 'Writing', 'link': 'https://eidolethe.itch.io/'},
-    {'name': 'A. Villarroel', 'picture': 'A. Villarroel', 'role': 'Writing', 'link': 'https://a-villarroel.itch.io/'},
+    {'name': 'Eidolethe', 'picture': 'test', 'role': 'Writing', 'link': None},
     {'name': 'Aluwite', 'picture': 'Aluwite', 'role': 'Writing', 'link': 'https://aluwite.carrd.co/'},
-    {'name': 'Ica', 'picture': 'Ica', 'role': 'Writing', 'link': 'https://littleicarus7.carrd.co/'},
-    {'name': 'AndryStudio', 'picture': 'AndryStudio', 'role': 'Composer', 'link': 'https://andrystudio.carrd.co/'},
+    {'name': 'Jem', 'picture': 'test', 'role': 'Writing', 'link': None},
+    {'name': 'Andry', 'picture': 'test', 'role': 'Composer', 'link': None},
     {'name': 'Haikeus', 'picture': 'haikeus', 'role': 'Programmer', 'link': 'https://haikeus.neocities.org'},
     {'name': 'EPI', 'picture': 'EPI', 'role': 'Korean translator', 'link': 'https://epi-zh.itch.io/'},
+    {'name': 'A. Villarroel', 'picture': 'the sloth', 'role': 'Writing', 'link': 'https://a-villarroel.itch.io/'},
 ]

@@ -83,7 +83,7 @@ translate korean strings:
 
     # game/screens.rpy:775
     old "Auto-Forward Time"
-    new "자동 재생 속도"
+    new "자동재생 속도"
 
     # game/screens.rpy:775
     old "Music Volume"
@@ -119,17 +119,17 @@ translate korean strings:
     new "아니오"
 
     old "no"
-    new "아니요"
+    new "아니오"
 
     old "bye"
-    new "잘 있어요."
+    new "잘 있어"
 
     old "(But before we start, what do you wish to be called?)"
-    new "(본격적으로 시작하기 전에, 어떤 이름으로 불리고 싶나요?)"
+    new "이름을 입력해주세요."
 
     # game/screens.rpy:1256
     old "Skipping"
-    new "건너뛰는 중"
+    new "건너뛰기"
 
     # game/screens.rpy:1565
     old "Back"
@@ -146,7 +146,7 @@ translate korean strings:
     ########## Here are the translations for Help/Controls screen
     # game/screens.rpy:1029
     old "HELP"
-    new "조작 방법"
+    new "도움말"
 
     # game/screens.rpy:1038
     old "Keyboard"
@@ -166,7 +166,7 @@ translate korean strings:
 
     # game/screens.rpy:1056
     old "Advances dialogue and activates the interface."
-    new "넘기기"
+    new "재생하기"
 
     # game/screens.rpy:1059
     old "Space"
@@ -174,7 +174,7 @@ translate korean strings:
 
     # game/screens.rpy:1060
     old "Advances dialogue without selecting choices."
-    new "선택지를 고르지 않고 넘기기"
+    new "선택지 미선택 재생"
 
     # game/screens.rpy:1063
     old "Arrow Keys"
@@ -182,11 +182,11 @@ translate korean strings:
 
     # game/screens.rpy:1064
     old "Navigate the interface."
-    new "조작하기"
+    new "조작 도움"
 
     # game/screens.rpy:1067
     old "Escape"
-    new "ESC"
+    new "나가기"
 
     # game/screens.rpy:1068
     old "Accesses the game menu."
@@ -206,23 +206,23 @@ translate korean strings:
 
     # game/screens.rpy:1076
     old "Toggles dialogue skipping."
-    new "대사 건너뛰기 유지"
+    new "토글하여 대사 건너뛰기"
 
     # game/screens.rpy:1079
     old "Page Up"
-    new "Page Up"
+    new "다음 페이지"
 
     # game/screens.rpy:1080
     old "Rolls back to earlier dialogue."
-    new "대사 역순으로 넘기기"
+    new "이잔 대사로 돌아가기"
 
     # game/screens.rpy:1083
     old "Page Down"
-    new "Page Down"
+    new "이전 페이지"
 
     # game/screens.rpy:1084
     old "Rolls forward to later dialogue."
-    new "대사 순차적으로 넘기기"
+    new "대사 앞으로 넘기기"
 
     # game/screens.rpy:1088
     old "Hides the user interface."
@@ -238,7 +238,7 @@ translate korean strings:
 
     # game/screens.rpy:1102
     old "Middle Click"
-    new "가운데 클릭"
+    new "중앙 클릭"
 
     # game/screens.rpy:1106
     old "Right Click"
@@ -246,11 +246,11 @@ translate korean strings:
 
     # game/screens.rpy:1110
     old "Mouse Wheel Up"
-    new "위로 휠 스크롤"
+    new "위로 스크롤"
 
     # game/screens.rpy:1114
     old "Mouse Wheel Down"
-    new "아래로 휠 스크롤"
+    new "아래로 스크롤"
 
     # game/screens.rpy:1121
     old "Right Trigger, A/Bottom Button"
@@ -258,11 +258,11 @@ translate korean strings:
 
     # game/screens.rpy:1125
     old "Left Trigger, Left Shoulder"
-    new "왼쪽 트리거, 왼쪽 범퍼"
+    new "왼쪽 트리거"
 
     # game/screens.rpy:1129
     old "Right Shoulder"
-    new "오른쪽 범퍼"
+    new "오른쪽 트리거"
 
     # game/screens.rpy:1133
     old "D-Pad, Sticks"
@@ -278,190 +278,190 @@ translate korean strings:
 
     # game/screens.rpy:1144
     old "Calibrate"
-    new "조정하기"
+    new "최적화"
 # TODO: Translation updated at 2025-06-29 18:03
 
 # game/screens.rpy:777
 translate korean de158882:
 
     # "screen preferences(): tag menu"
-    "screen preferences(): tag menu"
+    ""
 
 # game/screens.rpy:777
 translate korean 17129694:
 
     # "use game_menu(_(\"Preferences\"), scroll=\"viewport\"):"
-    "use game_menu(_(\"Preferences\"), scroll=\"viewport\"):"
+    ""
 
 # game/screens.rpy:777
 translate korean 518ce884:
 
     # "vbox:"
-    "vbox:"
+    ""
 
 # game/screens.rpy:777
 translate korean ae9aaf41:
 
     # "hbox: box_wrap True"
-    "hbox: box_wrap True"
+    ""
 
 # game/screens.rpy:777
 translate korean 21fe54af:
 
     # "if renpy.variant(\"pc\") or renpy.variant(\"web\"):"
-    "if renpy.variant(\"pc\") or renpy.variant(\"web\"):"
+    ""
 
 # game/screens.rpy:777
 translate korean 10cb9ac2:
 
     # "vbox: style_prefix \"radio\" label _(\"Display\") textbutton _(\"Window\") action Preference(\"display\", \"window\") textbutton _(\"Fullscreen\") action Preference(\"display\", \"fullscreen\")"
-    "vbox: style_prefix \"radio\" label _(\"Display\") textbutton _(\"Window\") action Preference(\"display\", \"window\") textbutton _(\"Fullscreen\") action Preference(\"display\", \"fullscreen\")"
+    ""
 
 # game/screens.rpy:777
 translate korean d82ed228:
 
     # "vbox: style_prefix \"check\" label _(\"Skip\") textbutton _(\"Unseen Text\") action Preference(\"skip\", \"toggle\") textbutton _(\"After Choices\") action Preference(\"after choices\", \"toggle\") textbutton _(\"Transitions\") action InvertSelected(Preference(\"transitions\", \"toggle\"))"
-    "vbox: style_prefix \"check\" label _(\"Skip\") textbutton _(\"Unseen Text\") action Preference(\"skip\", \"toggle\") textbutton _(\"After Choices\") action Preference(\"after choices\", \"toggle\") textbutton _(\"Transitions\") action InvertSelected(Preference(\"transitions\", \"toggle\"))"
+    ""
 
 # game/screens.rpy:777
 translate korean ed6bd682:
 
     # "## Additional vboxes of type \"radio_pref\" or \"check_pref\" can be ## added here, to add additional creator-defined preferences."
-    "Additional vboxes of type \"radio_pref\" or \"check_pref\" can be ## added here, to add additional creator-defined preferences."
+    ""
 
 # game/screens.rpy:777
 translate korean cfc0e72b:
 
     # "null height (4 * gui.pref_spacing)"
-    "null height (4 * gui.pref_spacing)"
+    ""
 
 # game/screens.rpy:777
 translate korean 255a51fe:
 
     # "hbox: style_prefix \"slider\" box_wrap True"
-    "hbox: style_prefix \"slider\" box_wrap True"
+    ""
 
 # game/screens.rpy:777
 translate korean 518ce884_1:
 
     # "vbox:"
-    "vbox:"
+    ""
 
 # game/screens.rpy:777
 translate korean b7d50afc:
 
     # "label _(\"Text Speed\")"
-    "label _(\"Text Speed\")"
+    ""
 
 # game/screens.rpy:777
 translate korean fe0dbbe6:
 
     # "bar value Preference(\"text speed\")"
-    "bar value Preference(\"text speed\")"
+    ""
 
 # game/screens.rpy:777
 translate korean 44eb1b4d:
 
     # "label _(\"Auto-Forward Time\")"
-    "label _(\"Auto-Forward Time\")"
+    ""
 
 # game/screens.rpy:777
 translate korean d8b8778f:
 
     # "bar value Preference(\"auto-forward time\")"
-    "bar value Preference(\"auto-forward time\")"
+    ""
 
 # game/screens.rpy:777
 translate korean 518ce884_2:
 
     # "vbox:"
-    "vbox:"
+    ""
 
 # game/screens.rpy:777
 translate korean d5dafb16:
 
     # "if config.has_music: label _(\"Music Volume\")"
-    "if config.has_music: label _(\"Music Volume\")"
+    ""
 
 # game/screens.rpy:777
 translate korean 97dabe51:
 
     # "hbox: bar value Preference(\"music volume\")"
-    "hbox: bar value Preference(\"music volume\")"
+    ""
 
 # game/screens.rpy:777
 translate korean 569043b9:
 
     # "if config.has_sound:"
-    "if config.has_sound:"
+    ""
 
 # game/screens.rpy:777
 translate korean 28ac0efb:
 
     # "label _(\"Sound Volume\")"
-    "label _(\"Sound Volume\")"
+    ""
 
 # game/screens.rpy:777
 translate korean f072e1d2:
 
     # "hbox: bar value Preference(\"sound volume\")"
-    "hbox: bar value Preference(\"sound volume\")"
+    ""
 
 # game/screens.rpy:777
 translate korean f0fc71ea:
 
     # "if config.sample_sound: textbutton _(\"Test\") action Play(\"sound\", config.sample_sound)"
-    "if config.sample_sound: textbutton _(\"Test\") action Play(\"sound\", config.sample_sound)"
+    ""
 
 # game/screens.rpy:777
 translate korean a7249997:
 
     # "if config.has_voice: label _(\"Voice Volume\")"
-    "if config.has_voice: label _(\"Voice Volume\")"
+    ""
 
 # game/screens.rpy:777
 translate korean 55f18ae3:
 
     # "hbox: bar value Preference(\"voice volume\")"
-    "hbox: bar value Preference(\"voice volume\")"
+    ""
 
 # game/screens.rpy:777
 translate korean 2c712bc1:
 
     # "if config.sample_voice: textbutton _(\"Test\") action Play(\"voice\", config.sample_voice)"
-    "if config.sample_voice: textbutton _(\"Test\") action Play(\"voice\", config.sample_voice)"
+    ""
 
 # game/screens.rpy:777
 translate korean 627f9f35:
 
     # "if config.has_music or config.has_sound or config.has_voice: null height gui.pref_spacing"
-    "if config.has_music or config.has_sound or config.has_voice: null height gui.pref_spacing"
+    ""
 
 # game/screens.rpy:777
 translate korean 2cb96b00:
 
     # "textbutton _(\"Mute All\"): action Preference(\"all mute\", \"toggle\") style \"mute_all_button\""
-    "textbutton _(\"Mute All\"): action Preference(\"all mute\", \"toggle\") style \"mute_all_button\""
+    ""
 
 translate korean strings:
 
     # game/screens.rpy:729
     old "Upload Sync"
-    new "파일 싱크"
+    new ""
 
     # game/screens.rpy:733
     old "Download Sync"
-    new "싱크 다운받기"
+    new ""
 
     # game/screens.rpy:777
     old "Transitions"
-    new "변환 애니메이션"
+    new ""
 
     # game/screens.rpy:777
     old "Test"
-    new "테스트"
+    new ""
 
     # game/screens.rpy:1031
     old "Help"
-    new "도움말"
+    new ""
 

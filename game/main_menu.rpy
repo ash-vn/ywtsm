@@ -103,18 +103,18 @@ screen custom_quit:
 transform no_pos:
     xalign 0.62
     yalign 0.0
-    ease 0.5 yalign 0.6
     on idle:
         linear .2 zoom 1.0
+        ease 0.5 yalign 0.6
     on hover:
         linear .2 zoom 1.1
 
 transform bye_pos:
     xalign 0.618
     yalign -1.0
-    ease 1.0 yalign 0.7
     on idle:
         linear .2 zoom 1.0
+        ease 1.0 yalign 0.7
     on hover:
         linear .2 zoom 1.1
 
