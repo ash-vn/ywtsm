@@ -1,4 +1,7 @@
 label your_hard_work():
+    
+    play music "assets/audio/music/bgm.mp3" volume 1.0 fadeout 0.2
+    scene kitchen with dissolve
     """Work, coffee, typing, and paper cranes. The rain is pouring, yet the vibes from the house are anything but gloomy. 
 
     You are working on a text draft – a personal project of yours that fosters into one of your most cherished hobbies.
@@ -8,7 +11,9 @@ label your_hard_work():
     The sugar rush provides the energy you need to keep typing.
 
     It’s your usual routine, untethered to whichever place you ever called home. You sit upright, fingers dancing around the keys. 
-
+    """
+    show i thinking_ serious at center with dissolve
+    """
     One clear difference is next to you, Icarus who wanders like a cat loitering around. Sometimes close enough that he would have a place to belong in the corner of your eye.
 
     Silence that feels tranquil yet off lingers around you.
@@ -20,29 +25,42 @@ label your_hard_work():
     However, what’s on screen is still your main priority. The keyboard is still the top resting place for your fingers.
 
     Icarus sometimes glances over, until he actually asks."""
-
+    show i light serious idle
     ICARUS "“[ILORA.name]… busy?”"
 
     menu:
         "Give a nod":
+            hide i with dissolve
             call aff_1 from _call_aff_1
             """
-            There was no obvious reaction. But out of nowhere after that, somehow you found his head leaned in to take a quick peek at your screen. 
+            There was no obvious reaction. But out of nowhere after that,{nw}"""
+            window auto hide
+            scene black with dissolve
+            with blink
+            scene kitchen with dissolve
+            show i closer idle at center with dissolve:
+                yalign 0.3 zoom 3    
+            with Pause(1)
+
+            """
+            There was no obvious reaction. But out of nowhere after that,{fast} {w}somehow you found his head leaned in to take a quick peek at your screen. 
 
             From the shock, you fumble and accidentally delete a portion of your work.
             """
 
+            show i startle idle
             ICARUS "“Oh? Did I catch you off guard?” "
 
             ILORA "“You almost made me delete my work because of that! Lucky there is a undo button” "
-
+            show i surprise_ -closer 
             "He looks surprised before giving you a half-sulky look."
-
+            show i -surprise_ plead thinking_
             ICARUS "“Sorry! I just wanted to see your work.”"
-
+            show i farther 
             """
-            Icarus backs off, rather nonchalantly goes back to his paper cranes. 
-
+            Icarus backs off, rather nonchalantly goes back to his paper cranes."""
+            hide i with dissolve
+            """
             You sigh, restoring your lost work and continue to type. Despite the brief scare, the moment is quickly over as soon as it started.
             """
 
@@ -55,6 +73,7 @@ label your_hard_work():
             """
 
         "Give a short glance":
+            show i idle serious at center with dissolve
             call aff_0 from _call_aff_0
 
             """His eyebrows arose as you caught his eye.
@@ -62,12 +81,15 @@ label your_hard_work():
             He then diverted his attention to your screen, leaving the paper cranes. 
 
             You remain focused on your work, unfazed. Not giving him so much as a flinch as you typed away, engrossed in your work."""
-
+            show i serious light idle
             ICARUS "“[ILORA.name]…?”"
 
             "He tries to get your attention."
+            show i sad_ idle
 
             ICARUS "“Not answering…?” "
+            pause 0.5
+            hide i with dissolve
 
             """You truly couldn’t care much. Being so absorbed in your work that you paid no mind to him.
 
@@ -83,12 +105,18 @@ label your_hard_work():
 
             On a certain corner, some muttered sound can be heard faintly.""" 
 
-            ICARUS "“Did I do something wrong? Did I say something wrong? Did I… mess things up again…?” "
-
+            show i despair_ despair thinking_ at center with dissolve
+            ICARUS "Did I do something wrong? Did I say something wrong? Did I… mess things up again…?" 
+            hide i with dissolve
         "Give attention":
             call aff_2 from _call_aff_2
 
             ILORA "“Yeah, but it’s just a way to relax. What’s the matter?”."
+            scene black with dissolve
+            with blink
+            scene kitchen with dissolve
+            show i closer idle at center with dissolve:
+                yalign 0.3 zoom 2    
 
             """Thinking on a whim, Icarus decided it’d be a great idea to face-plant the keyboard of your notebook. 
 
@@ -96,7 +124,9 @@ label your_hard_work():
 
             In your irritation, it caused a trigger reaction - a sucker punch special for the ghost."""
 
-            ICARUS "“Ouch!” "
+            show i surprise
+            ICARUS "Ouch!"
+            show i sad_
 
             "It’s not his lucky day, or however he controls his astral being of getting physical with this realm."
 
@@ -107,6 +137,10 @@ label your_hard_work():
             "You take a deep sigh."
 
             ILORA "“How about you just sit down, and have a look.”"
+
+            scene black with dissolve
+            with blink
+            scene kitchen with dissolve
 
             """You move over to let him see what’s on the screen. 
 
@@ -121,26 +155,35 @@ label your_hard_work():
             Icarus takes a long glance at your writing, taking in all the details that you have taken your time to. 
 
             You watch his eyes go from words to sentences and then his gaze eventually meets yours.""" 
+            show i closer idle at center with dissolve:
+                yalign 0.3 zoom 2    
+            show i excited_
 
-            ICARUS "“Wow you really are a good writer, you know?” "
+            ICARUS "“Wow, you really are a good writer, you know?” "
 
             ILORA "“Wow, surprised it took you long enough to figure out, I would have thought that the way I speak would have given it all away.”" 
 
+            show i giggle_ idle
             "You state as you give him a gaze that basically states “are you serious” as you raise your eyebrow." 
 
             ILORA "“Finish your commentary?” "
-
+            show i thinking_
             ICARUS "“I think… it really did go deep.”"
 
             "There was something in his eyes that you cannot comprehend while he gave a short stop for his voice."
+            
+            play music "assets/audio/music/joy.mp3" volume 1.0 fadeout 0.2
             ICARUS "“Maybe it really left me in a trance just now…”"
-
+            show i love_
             ICARUS "“I mean there’s always some sort of light around you… but your way with words is one that even I can’t question.”"
 
             "Light? You chuckled inside."
 
             ILORA "“Well, seems honest enough… Thank you?”" 
 
+            scene black with dissolve
+            with blink
+            scene kitchen with dissolve
             """There was never a single lie. 
 
             He took a paper crane that he had just made and began doodling rain all over it, one of the symbols that revolved in your chapter. 
@@ -155,6 +198,8 @@ label your_hard_work():
 
             On one hand, Icarus’s eyes glitters like he wants something right at that moment, but you can’t quite pinpoint exactly what it is that he suddenly seems to desire.""" 
 
+            show i love_ with dissolve
+
             ILORA "“Is there something you want?”" 
 
             ICARUS "“Yeah… there is one…”" 
@@ -166,17 +211,21 @@ label your_hard_work():
             He looked at with a gaze of admiration that was even more deeper than one that he would give to paper cranes created by his bare hands.
 
             It was almost like you became his new muse."""
+            scene black with dissolve
+            with blink
+            scene kitchen with dissolve
 
     return
 
 label pet_goldfish_1():
+    
+    play music "assets/audio/music/bgm.mp3" volume 1.0 fadeout 0.2
     scene kitchen with dissolve
     'Sunlight slants across the counter. A couple of half-folded paper cranes lay strewn next to your glass of water.'
 
-    show icarus at icarus_transform with dissolve
+    show i thinking_ serious at center with dissolve
     'Icarus is crouched on the floor near the table leg, focused on his latest crane, brows furrowed in adorable concentration.'
 
-    hide icarus with dissolve
     """
     You’re lying on the couch lazily scrolling through some social media reels. 
 
@@ -189,7 +238,7 @@ label pet_goldfish_1():
 
     ILORA "“I’m thinking of getting a goldfish.”"
 
-    show icarus at icarus_transform with dissolve
+    show i startle light serious idle
     ICARUS "“Gold…fish?”"
 
     "You glance up. He’s peeking over the table now, slowly blinking as if you just spoke in riddles."
@@ -201,22 +250,22 @@ label pet_goldfish_1():
     ILORA "“It won’t try to talk to me while I’m brushing my teeth. Or hover behind me while I sleep.”"
 
     "You give him a wink as he holds his hands up, mock-innocent."
-
+    show i thinking_ plead
     ICARUS "“I was not pointlessly hovering. I was…guarding you, clearly.”"
 
     ILORA "“Plus, goldfishes are so cute! They’re little orange blimps with no concept of consequences. You feed them. They do a little spin. That’s it.”"
-
+    show i -thinking_ content_ -plead
     'You jump off the couch and begin pacing around, faster and faster.'
 
 
     ILORA "“And the bowl—yeah, the bowl can go on the table, maybe. Or the window. Near the light!”" 
-
+    show i giggle_ content_ 
     ILORA "“It’ll reflect on the walls in the morning. That’s nice. That’s peaceful.”"
 
     'Without missing a beat, you grab the keys on the table and head towards the door. '
-
+    show i idle happy
     ILORA "“See you soon! I’m going to go pet-shopping.”"
-
+    show i surprise_
     ICARUS "“Whoa, whoa. Hold on, right now?”"
 
     ILORA "“Yes, bye!”" 
@@ -231,30 +280,30 @@ label pet_goldfish_1():
 
     'You enter, balancing a plastic bag with a sloshing clear cup and a little orange blur swimming tight, frantic circles inside.'
 
-    show icarus at icarus_transform with dissolve
+    show i surprise at center with dissolve
     ICARUS "“Wow, you really did it.”" 
-
+    show i light serious idle
     'He tilts his head, studying the bag in your hands intensely. '
 
 
 
     if cur_aff_level == 2:
         $ fish_count = 2
-
+        show i startle happy idle
         ICARUS "“And you got two, at that.”" 
 
         ILORA "“Mhmm! I thought one might get too lonely.”" 
 
         ILORA "“Look at them. Aren’t they adorable together?”" 
-
+        show i worry_ startle idle
         'You coo as you bring them closer to his face. '
 
         ILORA "“What shall I name them~?”"
-
+        show i thinking_
         'He takes them out of your hands, gently helping to pour the two into the little bowl.' 
-
+        show i excited_
         ICARUS "“How about Icarus and [ILORA.name.capitalize()]?”" 
-
+        show i love_
         ICARUS "“After all, you did say they looked good together.”"
 
         'You feel your cheeks redden and out of instinct, burst into laughter.' 
@@ -267,17 +316,17 @@ label pet_goldfish_1():
         'It’s hard to tell how he feels about your spontaneous domestic purchase. '
 
         ILORA "“Okay, so please tell me this was the best decision I’ve ever made.”" 
-
+        show i light serious idle
         ICARUS "“Uhh, well, best is a strong word.”" 
-
+        show i flowery idle
         ICARUS "“But it might be a good decision. Depending on how this pans out.”"
 
         'You carefully pour the fish into the prepared little bowl. '
 
         ILORA "“Hmm, what shall we name him?”" 
-
+        show i closer love_
         'Icarus leans closer, squinting.' 
-
+        show i light idle
         ICARUS "“How about ‘Tragic’?”"
 
         ILORA "“...What.”"
@@ -285,9 +334,9 @@ label pet_goldfish_1():
         ICARUS "“He looks like he’s regretting his life decisions. Deeply.”" 
 
         ILORA "“The fish was literally born three days ago.”"
-
+        show i -closer happy
         'Icarus shrugs offhandedly. '
-
+        show i light idle
         ICARUS "“Some souls age fast.”"
 
         "You look at the fish."
@@ -296,11 +345,11 @@ label pet_goldfish_1():
             $ fish_name = renpy.input("What do you name it..?")
 
         if fish_name and fish_name.lower() == 'tragic':
-
+            show i -happy mischief_
             'Icarus smirks. You’re not sure why, but he seems extremely pleased with the name.' 
-
+            show i light idle
             'Perhaps he feels sorry for the fish? '
-
+        show i light idle
         ILORA "“Welcome home, [fish_name].”"
 
         "Icarus sighs dramatically."
@@ -310,8 +359,9 @@ label pet_goldfish_1():
 
 label pet_goldfish_2():
     # if fish_count == 1 and cur_aff_level == 1:
+    stop music
     scene kitchen with dissolve
-    show icarus at icarus_transform with dissolve
+    show i light serious idle with dissolve
     ILORA "“Hey, so I might need you to feed [fish_name].”"
 
     'Icarus raises an eyebrow, remaining silent otherwise.'
@@ -319,7 +369,7 @@ label pet_goldfish_2():
     ILORA '“I’m working a little overtime today so I can’t babysit.”'
 
     ILORA '“Please?”'
-
+    show i startle worry idle
     ICARUS '“You’re…working overtime? Why would they make you do that?” '
 
     'He frowns, visibly concerned.'
@@ -328,14 +378,18 @@ label pet_goldfish_2():
 
     menu:
         "Oblige.":
+            play music "assets/audio/music/joy.mp3" volume 1.0 fadeout 0.2
             call aff_1 from _call_aff_1_1
             $ hugged = True
             'You sigh and open your arms. '
-
+            scene black with dissolve
+            with blink
+            
             'He moves in without hesitation, arms wrapping around your waist a little tighter than you expected.'
 
             ICARUS "{size=20}{color=#99B}{cps=*0.2}“{i}I missed this…{/i}”"
-
+            scene kitchen with dissolve
+            show i light happy idle with dissolve
             ICARUS '“I’ll feed [fish_name]. I promise. Even if he doesn’t blink back.”'
         "Don't.":
             call aff_0 from _call_aff_0_1
@@ -345,7 +399,7 @@ label pet_goldfish_2():
             ILORA '“I’m really in a rush. Raincheck?”'
 
             'He lowers his arms, smile thinning.'
-
+            show i broken_
             ICARUS '“Right. Sure. Of course.”'
 
             ICARUS '{cps=*0.2}“I’ll feed [fish_name].”'
@@ -356,6 +410,8 @@ label pet_goldfish_2():
     scene kitchen with dissolve
 
     if hugged:
+        
+        play music "assets/audio/music/bgm.mp3" volume 1.0 fadeout 0.2
         """
         You stumble back into the house at 9PM, feeling like you’re about to pass out. 
 
@@ -366,33 +422,40 @@ label pet_goldfish_2():
         The water is clean, food flakes mostly gone.
         """
 
-        show icarus at icarus_transform with dissolve
+        show i excited_ happy idle at center with dissolve
         ICARUS '“You’re back!”'
 
         "Before you can react, you're swept up in a full-body tackle-hug."
-
+        scene black with dissolve
         with vpunch
 
+        scene kitchen with dissolve
+        window auto hide
+        show i closer flowery idle at center with dissolve:
+            yalign 0.3 zoom 3
+        with Pause(1)
+        
         ILORA '“Whoa!”'
 
         'Icarus wraps himself around you like a clingy koala, head buried into your shoulder. '
-
+        show i plead_ excited idle
         ICARUS '“Are you proud of me? I’ve been getting along so well with [fish_name].”'
-
+        show i mischief_ excited idle
         ICARUS '“I’m basically his other parent now.” '
 
         ILORA '“...Oh. I see, that’s good.” '
 
         'You blink at his sudden enthusiasm, which was entirely unexpected, given how he nearly named your pet “Tragic” when they were first introduced. '
 
+        show i excited light idle
         'He spins to face the bowl, dramatically placing a hand on the rim like a proud coach. '
-
+        show i giggle_ idle excited
         ICARUS '“I gave him pep talks while you were gone. Told him not to give up on swimming in circles.”'
 
         ILORA '“Truly inspirational.”'
 
         ILORA '“...You did good. Thank you.” '
-
+        show i love_
         'His ears perk up. It’s almost embarrassing how quickly his face lights up.'
 
     else:
@@ -415,27 +478,27 @@ label pet_goldfish_2():
 
         ILORA '{cps=*0.6}“You’ve got to be kidding me.” '
 
-        show icarus at icarus_transform with dissolve
+        show i excited_ broken idle at center with dissolve
         ICARUS '“You’re back~!”'
 
         'Icarus enters from the hallway, drying his hands with a towel. His smile is as bright as anything. '
-
+        show i giggle_ broken idle
         ICARUS '“I was just cleaning the dishes. The pan was being kinda aggressive, but I won.”'
-
+        show i broken_
         ICARUS '“Like I always do.”'
 
         'You don’t say anything. You just look at him.' 
-
+        show i worry idle
         ICARUS '“What’s wrong? Why do you look upset?”'
-
+        show i closer idle
         ICARUS '“Was the work really that stressful? Let me give you a hug…”'
-
+        show i -closer hurt_ idle
         'But as he walks closer you shove him back a little.' 
-
+        show i farther hurt
         ILORA '“You had one job and you failed in the worst way possible!”'
-
+        show i thinking_
         'He follows your gaze towards [fish_name].' 
-
+        show i broken_
         ICARUS '“Ohh.”'
 
         # smile sprite
@@ -444,17 +507,18 @@ label pet_goldfish_2():
         ILORA '“You promised to take good care of [fish_name].”'
 
         ICARUS '“I did.”' 
-
+        show i giggle_ broken idle
         ICARUS '“But doesn’t some fish just don’t fit it? Haha. Perhaps ‘Tragic’ was truly a suitable name.”'
 
         'He shrugs as if discussing the weather.'
-
+        show i broken_
         ICARUS '“Oh well, you can just buy another one. And you’re back now. That’s what matters, right?”'
 
         'He walks past you into the kitchen, humming softly. The kettle clicks on.'
     return
 
 label just_a_friend:
+    scene black with dissolve
     """
     12:27 AM. A very specific time, one that you wouldn’t necessarily find anyone loitering about or wandering their way home, but one you now found yourself completely at the mercy of.
 
@@ -543,8 +607,6 @@ label just_a_friend:
 
         scene lounge with dissolve
 
-        show icarus at icarus_transform with dissolve
-
         """
         Your eyes dazily opened to the dimly morning-lit interior of your living room, the window curtains covered, and the balcony door closed.
 
@@ -555,28 +617,29 @@ label just_a_friend:
         That couch was not sleep-worthy.
         """
 
+        show i mischief_ happy idle at center with dissolve 
         ICARUS "“Rise and shine, sleepyhead!”"
-
+        show i worry_ idle
         "From your side rose Icarus, a sense of triumph as he did so. Despite his victorious appearance, however, his face told less of a grandiose tale."
 
         ILORA "“You look like you’ve seen a ghost.”"
-
+        show i thinking
         ICARUS "“More like a wolf in sheep's clothing.”"
 
         "He held his arms crossed, wearing a slight pout. You could tell he wasn’t exactly enthusiastic about your ‘friend’ from last night."
 
         "You let out a small sigh."
 
-        ILORA "{i}(So Seong-Jin did come over.){/i}"
+        ILORA "{i}(So HE did come over.){/i}"
 
         "Perhaps a part of you had hoped that it was just a dream, but Icarus’ behavior made that unfortunately hard to believe."
-
+        show i thinking_ hurt
         ICARUS "“What’d he think he was doing, carrying you about like that?”"
-
+        show i broken_ thinking idle
         ICARUS "“And he treated you with such carelessness! Doesn’t he know you’re sensitive to sound?”"
 
         "He turned away, reaching out toward some half-finished paper cranes. Amidst his vexed folding, you heard him mutter something under his breath."
-
+        show i shy_
         ICARUS "“Honestly… I would’ve treated you so much better.”"
 
         menu:
@@ -585,13 +648,13 @@ label just_a_friend:
                 "You gently lean toward Icarus, taking hold of one of the unfolded cranes next to him."
 
                 ILORA "“I’m sure you would’ve.”"
-
+                show i plead_
                 ICARUS "“I’m serious!”"
 
                 "A slight chuckle emerged from you, drowsiness still ever present, yet slowly fading in place of a kind warmth. "
 
                 ILORA "“So am I.”"
-
+                show i love_ idle
                 "You placed the finished crane down on the floor next to Icarus before getting up and starting toward the kitchen."
 
                 "Although it could’ve just been your imagination, for a second, it looked as if Icarus’ ears were blushing a bright red."
@@ -602,14 +665,15 @@ label just_a_friend:
 
                 "With a quick stretch, you hopped off the couch and started toward the kitchen, each a drowsy step leading your way."
 
-                "Icarus remained oblivious to this in his grumpy fit, continuing to yap on about Seong-Jin’s presence."
-
+                "Icarus remained oblivious to this in his grumpy fit, continuing to yap on about Seong-jin’s presence."
+                show i worry_
                 ICARUS "“How dare he lay his impure hands on her? I swear the next time I see him, it’s over!”"
-
+                show i thinking_ hurt
                 ICARUS "“And he didn’t even take off his shoes before entering. Look at all this dirt he tracked in.”"
         
         ILORA "“Don’t fret over him too much.”"
-
+        scene black with dissolve        
+        scene kitchen with dissolve
         """
         With the activation of the stove, the kettle lit up with bursting heat.
 
@@ -619,8 +683,8 @@ label just_a_friend:
 
         How long could that fire last?
         """
-
-        ILORA "(Jang Seong-Jin.)"
+        scene black with dissolve
+        ILORA "(Jang Seong-jin.)"
 
         """
         It was a name you recognized beyond just the colleague who had left you here. 
@@ -639,8 +703,10 @@ label just_a_friend:
 
         Because that’s what you must do.
         """
-        ICARUS "“Are you okay in there? The kettle’s been going for a bit now!”"
 
+        ICARUS "“Are you okay in there? The kettle’s been going for a bit now!”"
+        scene kitchen with dissolve
+        show i worry thinking_ with dissolve
         """
         Your train of thought was interrupted by Icarus’ inquiry and the piercing blow of the steaming kettle. 
 
@@ -655,7 +721,10 @@ label just_a_friend:
 
         """
         Icarus’ eyes fell to the slightly bent crane in his hands, a panicked expression swiping across his face.
+        """
 
+        hide i with dissolve
+        """
         You let out a sigh before looking back at the kettle, boiling heat seeping out even from the handle.
         """
 
@@ -743,7 +812,7 @@ label just_a_friend:
 
         Before you could look any longer, Icarus caught a glimpse of you from the side of his eye, a faint blush of embarrassment embellishing his soft face."""
 
-        show icarus at icarus_transform with dissolve
+        show i worry thinking_ with dissolve
         ICARUS "“Ah, sorry— did I wake you?” "
 
         """He wore a nervous smile on his face with a wry chuckle, rubbing the back of his neck with his hand.
@@ -757,7 +826,7 @@ label just_a_friend:
         ILORA "“You can go back to folding cranes.”"
 
         "Icarus stood up from his seated position, reshaping the crumpled crane almost to match the rest of the ones around it, before turning away from you. "
-
+        show i worry_ idle with dissolve
         ICARUS "“No, I think… I think I made enough for now.” "
 
         """He sounded different. Nothing too drastic of a departure from his regular voice, yet all the same, it didn’t sound like him.
@@ -774,15 +843,15 @@ label just_a_friend:
                 "A silence followed, Icarus staring out toward the balcony as the curtains continued to cover the light, leaving only a faint glow to shine through."
 
                 "Amidst the quiet, you could hear Icarus heaving a shallow yet sharp breath as he turned to face you just slightly."
-
+                show i -worry serious thinking_ with dissolve
                 ICARUS "“Yeah, I’m fine!” "
 
                 "His words here were far from the truth, but all the same, that look in his eyes made it clear that he wouldn’t listen to anything you said right now."
 
                 ILORA "“You don’t wanna talk about it?” "
-
+                show i off thinking_ with dissolve
                 ICARUS "“...I don’t.” "
-
+                hide i with dissolve
                 "He fell back into silence, continuing to stare outside at the balcony as he contemplated."
             "Leave him alone":
                 call aff_0 from _call_aff_0_3
@@ -1013,19 +1082,19 @@ label just_a_friend:
         Eyes now open, you turned to face the source of the sound, attempting to glimpse the origin of such a deathly noise.
 
         To your surprise, Icarus stood in the kitchen, fanning what looked to be the remnants of a dying flame."""
-
+        show i despair light idle with dissolve
         ICARUS "“Ah, you’re awake!”"
+        show i broken_ 
+        "Through the steam, you were able to catch a glimpse of the kettle, still sizzling atop the now inactive stove.
 
-        """Through the steam, you were able to catch a glimpse of the kettle, still sizzling atop the now inactive stove.
-
-        The entire kitchen was filled with smoke, with the distinct smell of ash filling the room.
-
-        Despite all the chaos, however, there was Icarus, chuckling ever so slightly as he panically attempted to clean the mess."""
+        The entire kitchen was filled with smoke, with the distinct smell of ash filling the room."
+        show i giggle_ idle broken
+        "Despite all the chaos, however, there was Icarus, chuckling ever so slightly as he panically attempted to clean the mess."
 
         ICARUS "“Honestly, how’d you manage to fall asleep while waiting on the kettle?”"
-
+        show i -despair
         ICARUS "“On the couch at that!”"
-
+        show i giggle_ idle broken
         ICARUS "“I swear, if it wasn’t for me, this house would be in flames already!”"
 
         """There was something odd about his tone of voice, but that didn’t matter to you right now.
@@ -1037,21 +1106,21 @@ label just_a_friend:
         For the most part, Icarus had cleaned the majority of the mess already, leaving only the kettle itself on the stove. """
 
         ILORA "“What happened?”"
-
+        show i despair light idle
         ICARUS "“Well, it looks like you left the stove on and fell asleep.”"
 
         ILORA "“And that’s all?”"
-
+        show i despair light idle
         "The conversation fell silent for a moment, but only for just that moment."
-
+        show i despair flowery idle
         ICARUS "“Yeah, that’s all.”"
-
+        show i broken
         """He wore an innocent smile, concealing whatever truth he may have had behind closed eyes.
 
         Regardless, the truth didn’t matter now, only what was present.
 
         In an attempt to clean the mess, you began moving stuff around, grabbing some towels to start scrubbing off the stains, before reaching the kettle and—"""
-
+        show i despair startle idle
         ICARUS "“Wait, it’s still hot—!”"
 
         """Too late.
@@ -1063,13 +1132,14 @@ label just_a_friend:
         You threw your hand into the sink, starting with lukewarm water before slowly transitioning into the cold, conditioning your hand to the temperature change. 
 
         It stung, albeit it was your mistake, and you were paying the price for it."""
-
+        show i hurt
         ICARUS "“...Why didn’t you listen…”"
 
         ILORA "“What?”"
-
+        show i broken_ happy idle
         ICARUS "“N-Nothing, I’ll grab you some bandages and ointment, so just hold still, ok?”"
 
+        hide i with dissolve
         """Icarus dashed off to some corner of the bathroom closet, digging through the shelves left and right.
 
         Your gaze lingered on his panicked expression, likely due to the emotional distress caused by your injury…

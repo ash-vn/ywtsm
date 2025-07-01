@@ -16,6 +16,7 @@ label end03:
 
     "You silently nod. "
 
+    show i giggle light idle with dissolve
     "He crosses the space between you in two strides and throws his arms around you, burying his face in your shoulder."
 
     ICARUS "“I’ll stay! {w}I’ll stay as long as you’ll have me.”"
@@ -71,6 +72,7 @@ label end04:
     "You take a breath. Then two. Then finally look him in the eye."
     ILORA "“I want you to stay. Not because you're a ghost I’m trying to help move on.”"
     ILORA "“But because I want you here. {w}Because I love you.”"
+    show i giggle light idle with dissolve
     "Icarus reaches out and delicately takes your hand, as if afraid this moment would break."
     ICARUS "“Even after everything?”"
     "You nod, your eyes stinging."
@@ -107,6 +109,7 @@ label end05:
     "His mouth opens. No words come out." 
     "You shrug, trying not to show how much that confession cost you."
     ICARUS "“[ILORA.name]…”"
+    show i giggle light idle with dissolve
     "He puts the crane down—gently, with both hands. Then he shuffles forward on his knees and wraps his arms around you. "
     "You melt into it, curling slightly into his warmth, cheek pressed into his shoulder."
     ICARUS "“Welcome home, honey.”"
@@ -141,7 +144,7 @@ label gut_ending:
     ILORA "“I wi–”"
 
     ILORA "“Wait, no. I, in fact, don't wish my wish was different.”"
-
+    show i giggle light idle with dissolve
     "You smile as he doesn’t roll his eyes at you even though he could have."
 
     ILORA "“So, what’s next–? Whoa!”"

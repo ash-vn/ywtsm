@@ -11,29 +11,29 @@ label pulling_back_together:
 
     ILORA "(Perhaps the earlier panic was unwarranted?)"
 
-    show icarus at icarus_transform with dissolve
+    show i light happy idle with dissolve
     ICARUS "“Eight hundred ninety-four.”"
 
     "He looks at you with hopeful eyes." 
-
+    show i content_ idle
     ICARUS "“We’re really getting close, huh?”"
 
     ILORA "“Yeah, we’re almost there.”"
-
+    show i serious love_
     'Icarus studies your expression.'
-
+    show i plead_
     ICARUS "“And you’re okay with this?”"
 
     ILORA "“I decided it’s fine…living like this.”"
 
     ILORA "“Because it’s with you.”"
-
+    show i love_ idle
     """
     He smiles. And you realize you’ve never seen this type of smile on him before. 
 
     It’s softer and smaller. Almost vulnerable. 
     """
-
+    show i giggle 
     ICARUS "“Okay, I’ll do my best, then. For the cranes and for you.”" 
 
     ILORA "(Maybe this isn’t going to be forever. Maybe it’s not even anything yet.)"

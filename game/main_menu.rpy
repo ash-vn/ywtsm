@@ -120,7 +120,7 @@ transform bye_pos:
 
 label main_menu(load=True):
     # jump start  ###### DEBUGGGGG
-    # define config.developer = False
+    define config.developer = False
     # while True:
     #     call gallery
     if renpy.music.get_playing() != "assets/audio/music/bgm.mp3" or renpy.music.get_playing(channel="music1") != "assets/audio/music/bgm_dist.mp3":

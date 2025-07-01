@@ -57,6 +57,7 @@ label unlock_cg(cg_name):
 label ending(number):
     image end_image = "images/endings/END[number].png"
 
+    scene black with Dissolve(1.0)
     call unlock_cg("endings/END[number]") from _call_unlock_cg_1
     $ persistent.endings_seen[int(number) - 1] = True
 

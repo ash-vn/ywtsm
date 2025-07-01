@@ -81,6 +81,7 @@ screen gallery_screen:
         vbar value YScrollValue("custom_vp")
 
 screen gallery_view(filename):
+    add "gui/whitebg.jpg"
     add filename xalign 0.5 yalign 0.5 xsize 1920 ysize 1080
     imagebutton auto "gui/button/go back button %s.png" action Hide(screen="gallery_view") at prefs_go_back_pos, hover_enlarge_tilt
 

@@ -1,5 +1,6 @@
 label meet_cute:
     scene door with dissolve
+    play music "assets/audio/music/bgm.mp3" volume 1.0 fadeout 0.2
     """
     You cough as dust from the boxes you're opening up rises, floating and shining under the morning sunlight. 
 
@@ -38,6 +39,7 @@ label meet_cute:
 
     Thud. 
     """
+    stop music
     ILORA "“Hmm?”"
     """
     You didn't reach what you sought. Instead, you find a paper figure next to your foot, almost crushed under it. Maybe you stepped on it a bit. Yes, you stepped on a wing.

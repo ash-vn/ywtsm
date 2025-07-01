@@ -163,6 +163,7 @@ label bed:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
+    call unlock_cg(image_paths[cur_img])
     return
 
 label desk:
@@ -192,6 +193,7 @@ label desk:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
+    call unlock_cg(image_paths[cur_img])
     return
 
 label kitchen:
@@ -219,6 +221,7 @@ label kitchen:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
+    call unlock_cg(image_paths[cur_img])
     return
 
 label lounge:
@@ -246,6 +249,7 @@ label lounge:
         renpy.hide(f'{cur_img}', layer='sprites')
         renpy.transition(dissolve, layer='sprites')
         renpy.pause(0.6)
+    call unlock_cg(image_paths[cur_img])
     return
 
 label outside:

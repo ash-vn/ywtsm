@@ -1,7 +1,7 @@
 label midpoint_crisis:
     """
     It hasn’t been long enough for the seasons to change, only a month actually. Still, the gentle face of a ghostly presence greeting you every morning has become familiar.
-
+    
     Dear even, maybe.
 
     Isn’t it senseless, though? You don’t understand what such care for Icarus means, only that it lies somewhere in your heart. How deep it runs is… debatable. Is there a point to letting yourself grow fonder of him anyhow? Where will this lead you?
@@ -17,12 +17,12 @@ label midpoint_crisis:
 
         "You’re not sure.":
             "This is an unexpected feeling and, since you can’t pinpoint it, full of uncertainty."
-
+            show i content_ idle happy
             """
             You can’t deal with this.
 
             You don’t want to deal with this.
-
+            
             He’s not a bad one, probably, just inconvenient. You didn't buy a near desolate but pretty place to get an extra ghost in the package, so you’re not going to carry the weight of having to share the rest of your life with him. 
 
             Well, not the rest of your life, that might be a bit dramatic, but to share your space with him for at least the next couple of years. There’s no comfort in living with a… stranger.
@@ -49,23 +49,23 @@ label end09:
     """It’s a cold evening, cold enough to give you the strength to confront Icarus. 
 
     On a warmer day you could have grown too soft, you would have postponed delivering the news. You would have bought sweet ice cream and sat under the sun even if it melted your dessert. 
-
+    
     Now, on the other hand, you hold a cup of sugarless coffee, drink it down and leave it in the sink.
-
+    
     After finishing lunch, you ask him to come follow you into another room; you bring him to the one where it all started, where you met.
-
+    
     His eyes shift around the room, visibly anxious. He might know what you’ll say already."""
-
+    show i thinking_ idle -sad_ idle
     ILORA "“Icarus, I am grateful to have had your company for the past days, truly…”"
-
+    
     "No, in truth, you’d rather not have had him but - oh well, you can still be kind when you wish to be."
-
+    
     ILORA "“But I didn’t plan to have company, and my patience has worn thin. I’d rather be left alone now so…”"
-
+    show i broken idle startle
     "With a determined glance at him, you make your verdict."
 
     ILORA "“You must leave now!”"
-
+    show i idle startle
     "Poof!"
 
     ILORA "“Ugh!”"
@@ -80,21 +80,21 @@ label end09:
 
 label end10:
     """He sits there, opposite you on the other end of the table.
-
+    
     You feel like a grumpy middle school teacher, a quiet, muttering teacher. 
-
+        
     You’re giving a kid detention and sending him off to the principal’s office. 
 
     After all, you’re getting rid of Icarus just because he breathes… Well, he doesn’t exactly breathe anymore - but to finish the idea, just because he breathes the same air you do. 
-
+    
     Technically, it’s your right to be able to live alone in your own property, but it doesn’t feel right. """
-
+    show i plead_ idle
     ILORA "“I can’t do this…”"
-
+    show i idle
     ICARUS "“Did you say something?”"
-
+    show i sad_
     ILORA "“Nothing! Nothing at all.”"
-
+    show i close -off -worry
     """He blinks, perplexed, and returns to his making of paper cranes.
 
     Of course you can’t kick him out. Righteousness or lack of backbone, whichever you’d rather pick, won’t let you ask him to take leave.
@@ -111,13 +111,13 @@ label end10:
 
 label end11:
     """You could be frank, maybe a bit rude if you really want to be, and tell Icarus you can’t stand him anymore, to leave and never show his face again so you can restore your peace.
-
+    
     You could be kind, too soft if his poor gaze makes you regret your choice, and explain your need for solitude to recover from a harsh life.
 
     You can also let him be, resist the wish of your heart and share your days with him, hoping he’ll leave one day on his own.
 
     Or you can escape.
-
+    
     You are an excellent runner in many ways, so running away is the most natural thing you or anyone else would do.
 
     Just as you unpacked everything the first day you got here, you packed up again. You do so in the dark and by the time daylight touches the first mountain peaks, you’ll be gone.
@@ -151,38 +151,38 @@ label end12:
 
     No hysterics."""
 
-
+    show i excited_ idle
     ICARUS "“Good morning!”"
 
     ILORA "“...”"
-
+    show i sad_ idle
     ICARUS "“[ILORA.name], can you hear me?”"
 
     """The next day…
 
     Another one of Icarus paper cranes lays atop the table while he finishes the one in his hands."""
-
+    show i mischief_ idle
     ICARUS "“Look, do you think the head’s right?”"
-
+    show i excited
     "You turn your gaze to the windows, to clouds that are swept away by the blowing wind."
-
+    show i hurt_ idle off
     ICARUS "“[ILORA.name], can you see me?”"
-
+    show i plead_ idle sad
     """The next–
 
     He taps your shoulder.""" 
-
+    show i thingking_ idle sad
     ICARUS "“[ILORA.name], can you feel me?”"
-
+    show i worry
     """His hand rests in place, gingerly.
-
+    
 
     You simply pretend he doesn’t exist.
 
     Eventually, his vain attempts at bringing your attention fade. Or rather, he fades. One day, you return home as usual. You expect to hear the faint, manic pleas or the eager ‘welcome’ of a young man.
 
     You don’t.
-
+    
     No voice echoes across the rooms of your voice other than yours.
 
     You wanted this.
