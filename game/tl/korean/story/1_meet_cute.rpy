@@ -153,7 +153,7 @@ translate korean meet_cute_b12fb5e9:
 # game/story/1_meet_cute.rpy:42
 translate korean meet_cute_3cd960bb:
 
-    # "Eyes following your gesture"
+    # "Eyes following your gesture."
     "움직임을 좇는 듯한 시선."
 
 # game/story/1_meet_cute.rpy:42

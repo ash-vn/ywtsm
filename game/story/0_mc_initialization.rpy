@@ -55,13 +55,23 @@ label unlock_cg(cg_name):
     return
 
 label ending(number):
-    call unlock_cg("endings/END[number]") from _call_unlock_cg_1
+    image end_image = "images/endings/END[number].png"
 
-    scene Image("images/endings/END[number].png") with Dissolve(5.0)
+    call unlock_cg("endings/END[number]") from _call_unlock_cg_1
+    $ persistent.endings_seen[int(number) - 1] = True
+
+    scene end_image at ending_tf with Dissolve(5.0)
+
+    pause
 
     "{b}END.{/b}"
-    pause
 
     scene black with Dissolve(5.0)
 
     jump main_menu
+
+transform ending_tf:
+    xsize 1920
+    ysize 1080
+    fit "contain"
+    align (0.5, 0.5)

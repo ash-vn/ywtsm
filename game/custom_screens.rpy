@@ -2,7 +2,7 @@ image gallery_bg = 'gui/gallery bg.png'
 image HUD_Homescreen = "gui/HUD_Homescreen.png"
 
 default persistent.cg_list = [
-    {"name": 'First Meeting', "date": None, 'file': 'placeholder'},
+    # {"name": 'First Meeting', "date": None, 'file': 'placeholder'},
     {"name": 'Activity - Making Paper Cranes', "date": None, 'file': 'daily_event_art/0'},
     {"name": 'Activity - Scrolling Fun', "date": None, 'file': 'daily_event_art/1'},
     {"name": 'Activity - Cleaning Time', "date": None, 'file': 'daily_event_art/2'},
@@ -19,9 +19,9 @@ default persistent.cg_list = [
     {"name": "Ghosting is a common", "date": None, 'file': 'endings/END12'},
     {"name": "Love letter in the drawer", "date": None, 'file': 'endings/END13'},
     {"name": "Rain eventually stops as well", "date": None, 'file': 'endings/END14'},
-    {"name": "Marshmallows x Chocolate", "date": None, 'file': 'placeholder'},
-    {"name": "Toast x Toaster", "date": None, 'file': 'placeholder'},
-    {"name": "Chocolate x Valentines", "date": None, 'file': 'placeholder'},
+    # {"name": "Marshmallows x Chocolate", "date": None, 'file': 'placeholder'},
+    # {"name": "Toast x Toaster", "date": None, 'file': 'placeholder'},
+    # {"name": "Chocolate x Valentines", "date": None, 'file': 'placeholder'},
 ]
 
 label gallery:
@@ -196,9 +196,9 @@ transform lounge_pos:
 
 ###################################
 
+image options_bg = "gui/options bg.png"
+image options_paper = "gui/options paper.png"
 label preferences:
-    image options_bg = "gui/options bg.png"
-    image options_paper = "gui/options paper.png"
     define pref_tab = "audio"
 
     scene options_bg onlayer screens with dissolve
@@ -206,7 +206,7 @@ label preferences:
     python:
         renpy.transition(easeinbottom)
         renpy.show('options_paper', layer='screens')
-        renpy.call_screen('preferences_screen', onlayer='ontop')
+        renpy.call_screen('preferences_screen')
     scene -options_bg onlayer screens with dissolve
     return
 
@@ -236,7 +236,11 @@ default cur_name = None
 screen preferences_screen:
     tag menu
     if renpy.call_stack_depth():
-        imagebutton auto "gui/button/go back button %s.png" action Call("main_menu", load=False) at prefs_go_back_pos, hover_enlarge_tilt
+        imagebutton auto "gui/button/go back button %s.png" action [Function(renpy.hide, 'options_paper', layer='screens'),
+                                                                    Function(renpy.hide, 'options_bg', layer='screens'), 
+                                                                    Hide("preferences_screen", transition=easeoutbottom),
+                                                                    Call("main_menu", load=False)
+                                                                    ] at prefs_go_back_pos, hover_enlarge_tilt
     else:
         imagebutton auto "gui/button/go back button %s.png" action [Hide("preferences_screen", transition=easeoutbottom), Return()] at prefs_go_back_pos, hover_enlarge_tilt
 
@@ -427,12 +431,12 @@ transform credit_pic:
 
 define creditors = [
     {'name': 'NKD', 'picture': 'NKD', 'role': 'Game Director\nCG & sprite artist', 'link': 'https://x.com/enkadenka'},
-    {'name': 'Whilo', 'picture': 'test', 'role': 'Chibi Artist', 'link': None},
+    {'name': 'Whilo', 'picture': 'Whilo', 'role': 'Chibi Artist', 'link': 'https://x.com/Whilo_art'},
     {'name': 'Enim', 'picture': 'Enim', 'role': 'Chibi Artist', 'link': 'https://www.instagram.com/lorddarkness12600bcxviii/'},
     {'name': 'nuriatheartist', 'picture': 'Nuria', 'role': '3D Artist', 'link': 'https://nuriatheartist.carrd.co/'},
     {'name': 'Leny', 'picture': 'Leny', 'role': 'UI designer', 'link': 'https://www.instagram.com/rann51_/'},
     {'name': 'Tia', 'picture': 'Tia', 'role': 'Live2D rigging', 'link': 'https://www.instagram.com/tia_faisa'},
-    {'name': 'Eidolethe', 'picture': 'test', 'role': 'Writing', 'link': None},
+    {'name': 'Eidolethe', 'picture': 'Eidolethe', 'role': 'Writing', 'link': 'https://eidolethe.itch.io/'},
     {'name': 'A. Villarroel', 'picture': 'A. Villarroel', 'role': 'Writing', 'link': 'https://a-villarroel.itch.io/'},
     {'name': 'Aluwite', 'picture': 'Aluwite', 'role': 'Writing', 'link': 'https://aluwite.carrd.co/'},
     {'name': 'Ica', 'picture': 'Ica', 'role': 'Writing', 'link': 'https://littleicarus7.carrd.co/'},
