@@ -299,8 +299,8 @@ screen quick_menu():
 
             imagebutton auto "gui/button/skip button %s.png" action Skip() alternate Skip(fast=True, confirm=True)
             imagebutton auto "gui/button/auto button %s.png" action Preference("auto-forward", "toggle")
-            imagebutton auto "gui/button/save button %s.png" action QuickSave()
-            imagebutton auto "gui/button/load button %s.png" action QuickLoad()
+            imagebutton auto "gui/button/save button %s.png" action ShowMenu("save")
+            imagebutton auto "gui/button/load button %s.png" action ShowMenu("load")
             imagebutton auto "gui/button/menu button %s.png" action MainMenu()
 
         hbox:
@@ -315,6 +315,8 @@ screen quick_menu():
 ## the player has not explicitly hidden the interface.
 init python:
     config.overlay_screens.append("quick_menu")
+    
+    renpy.music.register_channel("music1", mixer="music", loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
 
 default quick_menu = True
 
@@ -1048,108 +1050,107 @@ screen help():
             elif device == "gamepad":
                 use gamepad_help
 
+style custom_label:
+    font gui.text_font
+    size 32
+    color "#0C2B43"
 
 screen keyboard_help():
+    vbox:
+        spacing 14
+        vbox:
+            text _("Enter") style 'custom_label'
+            text _("Advances dialogue and activates the interface.")
 
-    hbox:
-        label _("Enter")
-        text _("Advances dialogue and activates the interface.")
+        vbox:
+            text _("Space") style 'custom_label'
+            text _("Advances dialogue without selecting choices.")
 
-    hbox:
-        label _("Space")
-        text _("Advances dialogue without selecting choices.")
+        vbox:
+            text _("Arrow Keys") style 'custom_label'
+            text _("Navigate the interface.")
 
-    hbox:
-        label _("Arrow Keys")
-        text _("Navigate the interface.")
+        vbox:
+            text _("Escape") style 'custom_label'
+            text _("Accesses the game menu.")
 
-    hbox:
-        label _("Escape")
-        text _("Accesses the game menu.")
+        vbox:
+            text _("Ctrl") style 'custom_label'
+            text _("Skips dialogue while held down.")
 
-    hbox:
-        label _("Ctrl")
-        text _("Skips dialogue while held down.")
+        vbox:
+            text _("Tab") style 'custom_label'
+            text _("Toggles dialogue skipping.")
 
-    hbox:
-        label _("Tab")
-        text _("Toggles dialogue skipping.")
+        vbox:
+            text _("Page Up") style 'custom_label'
+            text _("Rolls back to earlier dialogue.")
 
-    hbox:
-        label _("Page Up")
-        text _("Rolls back to earlier dialogue.")
+        vbox:
+            text _("Page Down") style 'custom_label'
+            text _("Rolls forward to later dialogue.")
 
-    hbox:
-        label _("Page Down")
-        text _("Rolls forward to later dialogue.")
+        vbox:
+            text "H" style 'custom_label'
+            text _("Hides the user interface.")
 
-    hbox:
-        label "H"
-        text _("Hides the user interface.")
-
-    hbox:
-        label "S"
-        text _("Takes a screenshot.")
-
-    hbox:
-        label "V"
-        text _("Toggles assistive {a=https://www.renpy.org/l/voicing}self-voicing{/a}.")
-
-    hbox:
-        label "Shift+A"
-        text _("Opens the accessibility menu.")
+        vbox:
+            text "Shift+A" style 'custom_label'
+            text _("Opens the accessibility menu.")
 
 
 screen mouse_help():
+    vbox:
+        spacing 14
+        vbox:
+            text _("Left Click") style 'custom_label'
+            text _("Advances dialogue and activates the interface.")
 
-    hbox:
-        label _("Left Click")
-        text _("Advances dialogue and activates the interface.")
+        vbox:
+            text _("Middle Click") style 'custom_label'
+            text _("Hides the user interface.")
 
-    hbox:
-        label _("Middle Click")
-        text _("Hides the user interface.")
+        vbox:
+            text _("Right Click") style 'custom_label'
+            text _("Accesses the game menu.")
 
-    hbox:
-        label _("Right Click")
-        text _("Accesses the game menu.")
+        vbox:
+            text _("Mouse Wheel Up") style 'custom_label'
+            text _("Rolls back to earlier dialogue.")
 
-    hbox:
-        label _("Mouse Wheel Up")
-        text _("Rolls back to earlier dialogue.")
-
-    hbox:
-        label _("Mouse Wheel Down")
-        text _("Rolls forward to later dialogue.")
+        vbox:
+            text _("Mouse Wheel Down") style 'custom_label'
+            text _("Rolls forward to later dialogue.")
 
 
 screen gamepad_help():
+    vbox:
+        spacing 14
+        vbox:
+            text _("Right Trigger, A/Bottom Button") style 'custom_label'
+            text _("Advances dialogue and activates the interface.")
 
-    hbox:
-        label _("Right Trigger\nA/Bottom Button")
-        text _("Advances dialogue and activates the interface.")
+        vbox:
+            text _("Left Trigger, Left Shoulder") style 'custom_label'
+            text _("Rolls back to earlier dialogue.")
 
-    hbox:
-        label _("Left Trigger\nLeft Shoulder")
-        text _("Rolls back to earlier dialogue.")
+        vbox:
+            text _("Right Shoulder") style 'custom_label'
+            text _("Rolls forward to later dialogue.")
 
-    hbox:
-        label _("Right Shoulder")
-        text _("Rolls forward to later dialogue.")
+        vbox:
+            text _("D-Pad, Sticks") style 'custom_label'
+            text _("Navigate the interface.")
 
-    hbox:
-        label _("D-Pad, Sticks")
-        text _("Navigate the interface.")
+        vbox:
+            text _("Start, Guide, B/Right Button") style 'custom_label'
+            text _("Accesses the game menu.")
 
-    hbox:
-        label _("Start, Guide, B/Right Button")
-        text _("Accesses the game menu.")
+        vbox:
+            text _("Y/Top Button") style 'custom_label'
+            text _("Hides the user interface.")
 
-    hbox:
-        label _("Y/Top Button")
-        text _("Hides the user interface.")
-
-    textbutton _("Calibrate") action GamepadCalibrate()
+        textbutton _("Calibrate") style 'custom_label' action GamepadCalibrate()
 
 
 style help_button is gui_button
@@ -1242,6 +1243,7 @@ style confirm_button:
 
 style confirm_button_text:
     properties gui.text_properties("confirm_button")
+    font gui.interface_text_font
 
 
 ## Skip indicator screen #######################################################

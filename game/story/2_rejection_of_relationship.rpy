@@ -9,7 +9,7 @@ label rejection_of_relationship:
     You turn away, pulse still in your throat, and do what anyone does when reality gets a little wrinkled around the edges:
     You pretend it never happened. 
     """
-    if not blue:
+    if not points['blue']:
         """
         And — for good measure — you clarify that.
         
@@ -82,14 +82,14 @@ label rejection_of_relationship:
 
     menu:
         "“Hey! What the hell was that?”":
-            $ blue += 1
+            $ points['blue'] += 1
             "You point toward the curtain, heart still racing."
             ILORA "You caught me. What even are you?"
         "Say nothing.":
-            $ purple += 1
+            $ points['purple'] += 1
             "You dust yourself off, avoid looking at the curtain, and say nothing. If anyone asks later, you tripped. That’s all."
         "“...Thanks. For catching me.”":
-            $ orange += 1
+            $ points['orange'] += 1
             "Your voice is quiet, just enough to carry."
             ILORA "I’m not sure what would’ve happened otherwise. So, thank you."
 

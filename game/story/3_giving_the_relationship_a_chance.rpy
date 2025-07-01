@@ -50,7 +50,7 @@ label giving_the_relationship_a_chance:
 
     "He smiles."
 
-    ICARUS "Ilora, would you like me to help you unpack your things?"
+    ICARUS "[ILORA.name], would you like me to help you unpack your things?"
 
     ILORA "Hmm…"
 
@@ -182,8 +182,8 @@ label giving_the_relationship_a_chance:
 
     menu:
         "“Better doing that, rather than being a sore jumpscare”":
-            $ blue += 1
-            $ color = "blue"
+            $ points['blue'] += 1
+            $ player_color = "blue"
             """
             His laughter cracks, but you pretend not to notice.
 
@@ -195,8 +195,8 @@ label giving_the_relationship_a_chance:
             ILORA "Fine."
 
         "“Just..do your own thing, and let me do mine”":
-            $ purple += 1
-            $ color = "purple"
+            $ points['purple'] += 1
+            $ player_color = "purple"
             """
             You think he's about to reassure you, confirm your statement, but he eagerly nods instead.
 
@@ -206,8 +206,8 @@ label giving_the_relationship_a_chance:
             """
 
         "“I can help you with that”":
-            $ orange += 1
-            $ color = "orange"
+            $ points['orange'] += 1
+            $ player_color = "orange"
             "His laughter falters, mouth now slightly agape."
 
     "He's listening to you."

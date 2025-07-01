@@ -1,27 +1,27 @@
 image gallery_bg = 'gui/gallery bg.png'
 image HUD_Homescreen = "gui/HUD_Homescreen.png"
 
-define cg_list = [
-    {"name": 'MOMENT NAME MOMENT NAME', "date": None, 'file': 'test'},
-    {"name": 'dos', "date": None, 'file': 'test'},
-    {"name": 'tres', "date": None, 'file': 'test'},
-    {"name": 'cuatro', "date": None, 'file': 'test'},
-    {"name": 'cinco', "date": None, 'file': 'test'},
-    {"name": 'seis', "date": None, 'file': 'test'},
-    {"name": 'yks', "date": None, 'file': 'test'},
-    {"name": 'kaks', "date": None, 'file': 'test'},
-    {"name": 'kol', "date": None, 'file': 'test'},
-    {"name": 'nel', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
-    {"name": 'None', "date": None, 'file': 'test'},
+default persistent.cg_list = [
+    {"name": 'First Meeting', "date": None, 'file': 'placeholder'},
+    {"name": 'Activity - Making Paper Cranes', "date": None, 'file': 'daily_event_art/0'},
+    {"name": 'Activity - Scrolling Fun', "date": None, 'file': 'daily_event_art/1'},
+    {"name": 'Activity - Cleaning Time', "date": None, 'file': 'daily_event_art/2'},
+    {"name": 'Activity - Laundry Folding', "date": None, 'file': 'daily_event_art/3'},
+    {"name": 'Activity - Working Late', "date": None, 'file': 'daily_event_art/4'},
+    {"name": 'Activity - TV Coziness', "date": None, 'file': 'daily_event_art/5'},
+    {"name": 'Activity - Dear Diary', "date": None, 'file': 'daily_event_art/6'},
+    {"name": 'Activity - Cooking Together', "date": None, 'file': 'daily_event_art/7'},
+    {"name": "It's Been So Long", "date": None, 'file': 'endings/END06'},
+    {"name": "I mourn you", "date": None, 'file': 'endings/END07'},
+    {"name": "Us no more", "date": None, 'file': 'endings/END09'},
+    {"name": "Stuck in place", "date": None, 'file': 'endings/END10'},
+    {"name": "And like everybody", "date": None, 'file': 'endings/END11'},
+    {"name": "Ghosting is a common", "date": None, 'file': 'endings/END12'},
+    {"name": "Love letter in the drawer", "date": None, 'file': 'endings/END13'},
+    {"name": "Rain eventually stops as well", "date": None, 'file': 'endings/END14'},
+    {"name": "Marshmallows x Chocolate", "date": None, 'file': 'placeholder'},
+    {"name": "Toast x Toaster", "date": None, 'file': 'placeholder'},
+    {"name": "Chocolate x Valentines", "date": None, 'file': 'placeholder'},
 ]
 
 label gallery:
@@ -40,7 +40,6 @@ screen gallery_button:
         imagebutton auto "gui/gallery button %s.png" action Call("main_menu", load=False) at hover_enlarge_tilt yalign 0.83 xalign 0.07
 
 screen gallery_screen:
-
     side "c r":
         area (500, 40, 1420, 1040)
 
@@ -49,36 +48,54 @@ screen gallery_screen:
             mousewheel True
             vbox:
                 spacing -100
-                for i in range(20):
+                for i in range(len(persistent.cg_list)):
                     $ temp = [hover_enlarge,]
                     if i % 2 != 0:
                         $ temp.append(tilt)
-                    $ name = cg_list[i]['name'].upper()
-                    $ date = cg_list[i]['date'] or 'NOT UNLOCKED'
-                    $ filename = f"images/{cg_list[i]['file']}.png"
-                    imagebutton:
-                        at temp + [hover_enlarge]
-                        idle Fixed(
-                            "gui/gallery_frame.png",
-                            At(filename, gallery_cg_transform),
-                            Text([name, ' ' * (46 - len(name) - len(date)), date, '{size=54}\n' + f"{i + 1:02d}"],
-                                font=gui.text_font, xalign=0.2, yalign=0.85, size=32),
-                            xsize=961, ysize=715,
-                        )
-                        action NullAction()
-            
+                    $ name = persistent.cg_list[i]['name'].upper()
+                    $ date = persistent.cg_list[i]['date'] or 'NOT UNLOCKED'
+                    $ filename = f"images/{persistent.cg_list[i]['file']}.png"
+                    if persistent.cg_list[i]['date']:
+                        imagebutton:
+                            at temp
+                            idle Fixed(
+                                "gui/gallery_frame.png",
+                                At(filename, gallery_cg_transform),
+                                Text([name, ' ' * (46 - len(name) - len(date)), date, '{size=54}\n' + f"{i + 1:02d}"],
+                                    font=gui.text_font, xalign=0.2, yalign=0.85, size=32),
+                                xsize=961, ysize=715,
+                            )
+                            action Show(screen="gallery_view", transition=dissolve, filename=filename)
+                    elif i < 17:
+                        imagebutton:
+                            at temp
+                            idle Fixed(
+                                "gui/gallery_frame.png",
+                                At(filename, gallery_cg_transform, gallery_cg_locked_transform),
+                                Text([name, ' ' * (46 - len(name) - len(date)), date, '{size=54}\n' + f"{i + 1:02d}"],
+                                    font=gui.text_font, xalign=0.2, yalign=0.85, size=32),
+                                xsize=961, ysize=715,
+                            )
+                            action NullAction()
 
         vbar value YScrollValue("custom_vp")
+
+screen gallery_view(filename):
+    add filename xalign 0.5 yalign 0.5 xsize 1920 ysize 1080
+    imagebutton auto "gui/button/go back button %s.png" action Hide(screen="gallery_view") at prefs_go_back_pos, hover_enlarge_tilt
 
 transform tilt:
     rotate -5
 
 transform gallery_cg_transform:
-    fit "cover"
+    fit "fill"
     xsize 842
     ysize 446
     yalign 0.13
     xalign 0.3
+
+transform gallery_cg_locked_transform:
+    blur 50
 
 ###################################
 
@@ -184,13 +201,13 @@ label preferences:
     image options_paper = "gui/options paper.png"
     define pref_tab = "audio"
 
-    scene options_bg with dissolve
+    scene options_bg onlayer screens with dissolve
     hide screen blue_overlay onlayer sprites with dissolve
     python:
         renpy.transition(easeinbottom)
-        renpy.show('options_paper')
+        renpy.show('options_paper', layer='screens')
         renpy.call_screen('preferences_screen', onlayer='ontop')
-    scene -options_bg with dissolve
+    scene -options_bg onlayer screens with dissolve
     return
 
 transform prefs_go_back_pos:
@@ -215,6 +232,7 @@ label change_resolution(width=1920, height=1080):
     $ config.screen_height = height
     return
 
+default cur_name = None
 screen preferences_screen:
     tag menu
     if renpy.call_stack_depth():
@@ -229,6 +247,7 @@ screen preferences_screen:
         textbutton "AUDIO" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SelectedIf(SetVariable("pref_tab", "audio"))
         textbutton "GRAPHICS" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SetVariable("pref_tab", "graphics")
         textbutton "LANGUAGE" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SetVariable("pref_tab", "language")
+        textbutton "HELP" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SetVariable("pref_tab", "help")
         textbutton "CREDITS" text_align (0.5, 0.5) text_color "#DCE1E5" style "pref_buttons" action SetVariable("pref_tab", "credits")
     
     vbox:
@@ -266,10 +285,12 @@ screen preferences_screen:
                     spacing 14
                     text _("Display")  font gui.text_font size 32
                     text _("Resolution")  font gui.text_font size 32
+                    text _("Text Speed")  font gui.text_font size 32
+                    text _("Auto Speed")  font gui.text_font size 32
 
                 vbox:
                     spacing 14
-                    xpos 50
+                    xpos 25
                     hbox:
                         xsize 500
                         textbutton _("Window"):
@@ -290,6 +311,9 @@ screen preferences_screen:
                                 style "pref_buttons"
                                 text_align (0.5, 0.5)
                                 text_color "#DCE1E5"
+                    
+                    bar value Preference("text speed")
+                    bar value Preference("auto-forward time")
 
         elif pref_tab == "language":
             hbox:
@@ -325,34 +349,71 @@ screen preferences_screen:
                             text_align (0.5, 0.5)
                             text_color "#DCE1E5"
 
+        elif pref_tab == "help":
+            default device = "keyboard"
+            hbox:
+                textbutton _("Keyboard"):
+                    action SetScreenVariable("device", "keyboard")
+                    style "pref_buttons"
+                    text_align (0.5, 0.5)
+                    text_color "#DCE1E5"
+                textbutton _("Mouse"):
+                    action SetScreenVariable("device", "mouse")
+                    style "pref_buttons"
+                    text_align (0.5, 0.5)
+                    text_color "#DCE1E5"
+
+                if GamepadExists():
+                    textbutton _("Gamepad"):
+                        action SetScreenVariable("device", "gamepad")
+                        style "pref_buttons"
+                        text_align (0.5, 0.5)
+                        text_color "#DCE1E5"
+            side "c r":
+                viewport id "help vp":
+                    mousewheel True
+                    draggable True
+                    area (0, 0, 1200, 600)
+                    vbox:
+                        text " "
+                        if device == "keyboard":
+                            use keyboard_help
+                        elif device == "mouse":
+                            use mouse_help
+                        elif device == "gamepad":
+                            use gamepad_help
+                vbar value YScrollValue("help vp")
+
         elif pref_tab == "credits":
             side "c r":
                 viewport id "credit_vp":
                     area (-10, -10, 1200, 600)
                     mousewheel True
                     draggable True
-                    grid 4 3:
+                    grid 4 4:
                         spacing 30
                         top_margin 10
                         left_margin 10
                         for guy in creditors:
                             $ filename = f"gui/credits/{guy['picture']}.png"
                             vbox:
-                                xsize 235
+                                xsize 250
                                 ysize 351
                                 fixed:
                                     xsize 235
                                     ysize 235
-                                    imagebutton idle filename at credit_pic action OpenURL(guy['link'])
+                                    imagebutton idle filename at credit_pic hovered SetVariable('cur_name', guy['name'] + "'s") action OpenURL(guy['link'])
                                 text guy['name'] align (0.5, 0.5) size 32 font gui.name_text_font
                                 for role in guy['role'].split('\n'):
                                     text role align (0.5, 0.5) size 20
 
                 vbar value YScrollValue("credit_vp")
+            
+            if cur_name:
+                text "Click to go to [cur_name] website!"
 
 
 transform credit_pic:
-    # fit "cover"
     xsize 235
     ysize 235
     on hover:
@@ -365,15 +426,17 @@ transform credit_pic:
             zoom 1.00
 
 define creditors = [
-    {'name': 'NKD', 'picture': 'test', 'role': 'Project Manager\nCG & sprite artist', 'link': None},
+    {'name': 'NKD', 'picture': 'NKD', 'role': 'Game Director\nCG & sprite artist', 'link': 'https://x.com/enkadenka'},
     {'name': 'Whilo', 'picture': 'test', 'role': 'Chibi Artist', 'link': None},
-    {'name': 'Enim', 'picture': 'test', 'role': 'CG Artist', 'link': None},
-    {'name': 'Nuria', 'picture': 'test', 'role': '3D Artist', 'link': None},
-    {'name': 'Leny', 'picture': 'test', 'role': 'UI design', 'link': None},
-    {'name': 'Tia_Faisa', 'picture': 'test', 'role': 'Live2D rigging', 'link': None},
+    {'name': 'Enim', 'picture': 'Enim', 'role': 'Chibi Artist', 'link': 'https://www.instagram.com/lorddarkness12600bcxviii/'},
+    {'name': 'nuriatheartist', 'picture': 'Nuria', 'role': '3D Artist', 'link': 'https://nuriatheartist.carrd.co/'},
+    {'name': 'Leny', 'picture': 'Leny', 'role': 'UI designer', 'link': 'https://www.instagram.com/rann51_/'},
+    {'name': 'Tia', 'picture': 'Tia', 'role': 'Live2D rigging', 'link': 'https://www.instagram.com/tia_faisa'},
     {'name': 'Eidolethe', 'picture': 'test', 'role': 'Writing', 'link': None},
-    {'name': 'The Sloth', 'picture': 'test', 'role': 'Writing', 'link': None},
-    {'name': 'Andry', 'picture': 'test', 'role': 'Composer', 'link': None},
-    {'name': 'Haikeus', 'picture': 'test', 'role': 'Programmer', 'link': None},
+    {'name': 'A. Villarroel', 'picture': 'A. Villarroel', 'role': 'Writing', 'link': 'https://a-villarroel.itch.io/'},
+    {'name': 'Aluwite', 'picture': 'Aluwite', 'role': 'Writing', 'link': 'https://aluwite.carrd.co/'},
+    {'name': 'Ica', 'picture': 'Ica', 'role': 'Writing', 'link': 'https://littleicarus7.carrd.co/'},
+    {'name': 'AndryStudio', 'picture': 'AndryStudio', 'role': 'Composer', 'link': 'https://andrystudio.carrd.co/'},
+    {'name': 'Haikeus', 'picture': 'haikeus', 'role': 'Programmer', 'link': 'https://haikeus.neocities.org'},
     {'name': 'EPI', 'picture': 'EPI', 'role': 'Korean translator', 'link': 'https://epi-zh.itch.io/'},
 ]

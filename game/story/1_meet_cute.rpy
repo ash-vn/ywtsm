@@ -92,7 +92,7 @@ label meet_cute:
 
             They changed their hiding spot.
             """
-            $ blue += 1
+            $ points['blue'] += 1
 
         "Take them down.":
             """
@@ -121,7 +121,7 @@ label meet_cute:
 
             They're gone… apparently.
             """
-            $ purple += 1
+            $ points['purple'] += 1
 
         "Call them out.":
             ILORA "Hello?"
@@ -143,4 +143,4 @@ label meet_cute:
 
             For now, you'll let this stranger be.
             """
-            $ orange += 1
+            $ points['orange'] += 1
